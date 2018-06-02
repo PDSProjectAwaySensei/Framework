@@ -5,6 +5,7 @@
  */
 package Servico;
 
+import Dominio.Aluno;
 import Dominio.Usuario;
 import java.io.IOException;
 import java.lang.String;
@@ -38,14 +39,14 @@ public class Fachada {
         //FXMLLoader telaInicial = new FXMLLoader(getClass().getResource("/visual/fxml/Inicio.fxml"));
         stage = primaryStage;
         Scene telaInicial;
-        telaInicial = new Scene((new FXMLLoader(getClass().getResource("/visual/fxml/Inicio.fxml")).load()));
+        telaInicial = new Scene((new FXMLLoader(getClass().getResource("/Visual/fxml/Inicio.fxml")).load()));
         stage.setScene(telaInicial);
         stage.show();
     }
     
     public void telaEntrar() throws IOException{
         Scene telaEntrar;
-        telaEntrar = new Scene((new FXMLLoader(getClass().getResource("/visual/fxml/Entrar.fxml")).load()));
+        telaEntrar = new Scene((new FXMLLoader(getClass().getResource("/Visual/fxml/Entrar.fxml")).load()));
         stage.setScene(telaEntrar);
         stage.show();
     }
@@ -53,5 +54,11 @@ public class Fachada {
     public void usuarioEntrar(String usuario, String senha){
         Usuario user;
         user = usuarioServico.usuarioEntrar(usuario, senha);
+        System.out.println("Logou");
+        if (user != null){
+            if (user instanceof Aluno){
+                
+            }// else if (user instanceof Tutor)
+        }
     }
 }

@@ -1,7 +1,7 @@
 package Dados;
 
 import Dominio.Aluno;
-import dominio.usuario.Identificacao;
+import Dominio.Identificacao;
 import java.util.ArrayList;
 
 public interface AlunoDAO {

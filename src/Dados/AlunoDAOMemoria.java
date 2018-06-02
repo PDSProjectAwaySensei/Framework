@@ -1,7 +1,7 @@
 package Dados;
 
 import Dominio.Aluno;
-import dominio.usuario.Identificacao;
+import Dominio.Identificacao;
 import java.util.ArrayList;
 
 public class AlunoDAOMemoria implements AlunoDAO{
@@ -15,6 +15,7 @@ public class AlunoDAOMemoria implements AlunoDAO{
     public Boolean inserirAluno(Aluno aluno) {
         if (getAluno(aluno.getIdentificacao()) == null){
             alunos.add(aluno);
+            System.out.println(aluno.getIdentificacao().getUsuario());
             return true;
         } else {
             return false;

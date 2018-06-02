@@ -1,4 +1,5 @@
-package dominio.usuario;
+package Dominio;
+
 
 public class Identificacao {
     private String usuario;

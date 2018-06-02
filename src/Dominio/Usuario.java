@@ -1,13 +1,13 @@
 package Dominio;
 
-import dominio.usuario.Identificacao;
-import dominio.usuario.InformacaoPessoal;
+import Dominio.Identificacao;
+import Dominio.InformacaoPessoal;
 import java.util.ArrayList;
 
 public abstract class Usuario {
-	//private ArrayList<Mensagem> mensagens;
-	private Identificacao identificacao;
-	private InformacaoPessoal informacaoPessoal;
+    //private ArrayList<Mensagem> mensagens;
+    private Identificacao identificacao;
+    private InformacaoPessoal informacaoPessoal;
 
     public Usuario(Identificacao identificacao, InformacaoPessoal informacaoPessoal) {
         this.identificacao = identificacao;
