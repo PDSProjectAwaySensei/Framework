@@ -12,17 +12,20 @@ import Dominio.InformacaoPessoal;
  * @author jeck
  */
 public class UsuarioServico {
-    AlunoDAO alunoDAO;
+    AlunoDAOMemoria alunoDAO;
 
     public UsuarioServico() {
         this.alunoDAO = new AlunoDAOMemoria();
-        Aluno x = new Aluno(new Identificacao("alu", "123"), new InformacaoPessoal("", "", ""));
+        Aluno x = new Aluno(new Identificacao("alu", "123"), new InformacaoPessoal("alunofirst", "", ""));
         alunoDAO.inserirAluno(x);
     }    
     
-    Usuario usuarioEntrar(String usuario, String senha){
+    Aluno usuarioEntrar(String usuario, String senha){
         usuario = usuario.replaceAll("//s", "");
         Identificacao idEntrar = new Identificacao(usuario, senha);
-        return (alunoDAO.getAluno(idEntrar));
+        Aluno logado = (alunoDAO.getAluno(idEntrar));
+        if (logado == null) System.out.println("nulo");
+        else System.out.println("Logou Suesso");
+        return logado;
     }
 }

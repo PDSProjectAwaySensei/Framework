@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import Servico.Fachada;
+import java.io.IOException;
 
 /**
  * FXML Controller class
@@ -39,7 +40,7 @@ public class EntrarController implements Initializable {
     }    
 
     @FXML
-    private void entrar(ActionEvent event) {
+    private void entrar(ActionEvent event) throws IOException {
         Fachada fachada = Fachada.getInstancia();
         fachada.usuarioEntrar(textUsuario.getText(), textSenha.getText());
         

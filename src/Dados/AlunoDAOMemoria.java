@@ -15,7 +15,6 @@ public class AlunoDAOMemoria implements AlunoDAO{
     public Boolean inserirAluno(Aluno aluno) {
         if (getAluno(aluno.getIdentificacao()) == null){
             alunos.add(aluno);
-            System.out.println(aluno.getIdentificacao().getUsuario());
             return true;
         } else {
             return false;
@@ -38,10 +37,12 @@ public class AlunoDAOMemoria implements AlunoDAO{
     }
     
     @Override
-    public Aluno getAluno(Identificacao idEntrar){
+    public Aluno getAluno(Identificacao idEntrar){            
         for (Aluno i : alunos){
-            if  (i.getIdentificacao().equals(idEntrar)){
-                return i;
+            if  (i.getIdentificacao().getUsuario().equals(idEntrar.getUsuario())){
+                if (i.getIdentificacao().getUsuario().equals(idEntrar.getUsuario())){
+                    return i;
+                }
             }
         }
         return null;
