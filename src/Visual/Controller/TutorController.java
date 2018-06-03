@@ -5,9 +5,10 @@
  */
 package Visual.Controller;
 
-import Dominio.Aluno;
+import Dominio.Tutor;
 import Servico.Fachada;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
@@ -17,7 +18,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
@@ -26,12 +26,10 @@ import javafx.scene.input.MouseEvent;
  *
  * @author jeck
  */
-public class AlunoController implements Initializable {
+public class TutorController implements Initializable {
 
     @FXML
     private ImageView picFoto;
-    
-    /* Perfil */
     @FXML
     private JFXTextField textUsuario;
     @FXML
@@ -42,35 +40,30 @@ public class AlunoController implements Initializable {
     private JFXTextArea textDescricao;
     @FXML
     private JFXToggleButton togglePerfilEditavel;
-    
-    
     @FXML
     private JFXButton buttonSair;
     @FXML
-    private JFXButton buttonFaixa;
+    private JFXListView<?> treinos;
     @FXML
-    private ImageView picTutor;
-    @FXML
-    private Label textTutorNome;
-    @FXML
-    private JFXButton buttonMudarTutor;
-
-    private Aluno aluno;
-
-    public AlunoController(Aluno user) {
-        aluno = user;
-    }
+    private JFXListView<?> pupilos;
     
+    
+    private Tutor tutor;
+    
+    public TutorController(Tutor user){
+        tutor = user;
+    }
+
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {        
-        textUsuario.setText(aluno.getIdentificacao().getUsuario());        
-        textNome.setText(aluno.getInformacaoPessoal().getNome());        
-        textEmail.setText(aluno.getInformacaoPessoal().getEmail());        
-        textDescricao.setText(aluno.getInformacaoPessoal().getNome());
-    }
+    public void initialize(URL url, ResourceBundle rb) {
+        textUsuario.setText(tutor.getIdentificacao().getUsuario());        
+        textNome.setText(tutor.getInformacaoPessoal().getNome());        
+        textEmail.setText(tutor.getInformacaoPessoal().getEmail());        
+        textDescricao.setText(tutor.getInformacaoPessoal().getNome());
+    }    
 
     @FXML
     private void editarFoto(MouseEvent event) {
@@ -87,7 +80,11 @@ public class AlunoController implements Initializable {
     }
 
     @FXML
-    private void mudarTutor(ActionEvent event) {
+    private void adicionaTarefa(ActionEvent event) {
+    }
+
+    @FXML
+    private void removeTarefa(ActionEvent event) {
     }
     
 }

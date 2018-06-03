@@ -10,7 +10,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -18,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<JFXTabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@screen.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<JFXTabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@screen.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <tabs>
       <Tab closable="false" text="Perfil">
          <content>
@@ -125,44 +124,40 @@
             </HBox>
          </content>
       </Tab>
-      <Tab text="Tutor">
-         <content>
-            <JFXButton text="Reportar" />
-         </content>
+      <Tab closable="false" text="Tutor">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <ImageView fx:id="picTutor" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="picFoto1" fitHeight="200.0" fitWidth="200.0" onMouseClicked="#editarFoto" pickOnBounds="true" preserveRatio="true">
                            <HBox.margin>
-                              <Insets bottom="10.0" right="20.0" />
+                              <Insets bottom="10.0" left="2.0" right="20.0" top="4.0" />
                            </HBox.margin>
-                           <image>
-                              <Image url="@../imgs/user.png" />
-                           </image>
                         </ImageView>
                         <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label fx:id="textTutorNome" text="Sensei nome">
-                                 <font>
-                                    <Font size="25.0" />
-                                 </font>
+                              <JFXTextField fx:id="textUsuario1" alignment="BOTTOM_LEFT" promptText="Nome de Usuario" />
+                              <JFXTextField fx:id="textNome1" alignment="BOTTOM_LEFT" promptText="Nome Completo" />
+                              <JFXTextField fx:id="textEmail1" alignment="BOTTOM_LEFT" promptText="Email" />
+                              <JFXTextArea fx:id="textDescricao1" promptText="Descriçao">
                                  <VBox.margin>
-                                    <Insets left="20.0" top="40.0" />
+                                    <Insets top="50.0" />
                                  </VBox.margin>
-                              </Label>
+                              </JFXTextArea>
                            </children>
                         </VBox>
-                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="270.0">
+                        <VBox prefHeight="550.0" prefWidth="215.0">
                            <children>
-                              <JFXButton text="Reportar">
+                              <JFXButton fx:id="buttonMudarTutor" onAction="#mudarTutor" prefHeight="62.0" prefWidth="230.0" text="Mudar Sensei">
                                  <VBox.margin>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                    <Insets top="20.0" />
                                  </VBox.margin>
                               </JFXButton>
-                              <JFXButton fx:id="buttonMudarTutor" onAction="#mudarTutor" prefHeight="62.0" prefWidth="230.0" text="Mudar Sensei" />
                            </children>
+                           <padding>
+                              <Insets left="20.0" right="20.0" />
+                           </padding>
                         </VBox>
                      </children>
                   </HBox>

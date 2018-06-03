@@ -10,6 +10,12 @@ public class Tutor extends Usuario {
         super(identificacao, informacaoPessoal);
     }
 
+    public Tutor(ArrayList<Curso> listaDeCursos, ArrayList<Tarefa> listaDeTarefasSalvas, Identificacao identificacao, InformacaoPessoal informacaoPessoal) {
+        super(identificacao, informacaoPessoal);
+        this.listaDeCursos = listaDeCursos;
+        this.listaDeTarefasSalvas = listaDeTarefasSalvas;
+    }
+    
     public ArrayList<Curso> getListaDeCursos() {
         return listaDeCursos;
     }

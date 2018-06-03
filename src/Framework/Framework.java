@@ -31,8 +31,9 @@ public class Framework extends Application {
 }
 
 
-/* Abrir a interface de Aluno */
+/* Abrir a interface de Aluno DONE */ 
 /* Adicionar Tutor e Curso */
-/* Abrir a interface de Tutor */
-/* Adicionar demais classes */
+/* Abrir a interface de Tutor DONE*/
+/* Adicionar demais classes DONE*/
 /* Abrir janelas para todas as acoes */
+/* Editar Perfil */

@@ -5,13 +5,14 @@ import Dominio.InformacaoPessoal;
 import java.util.ArrayList;
 
 public abstract class Usuario {
-    //private ArrayList<Mensagem> mensagens;
+    private ArrayList<Mensagem> mensagens;
     private Identificacao identificacao;
     private InformacaoPessoal informacaoPessoal;
 
     public Usuario(Identificacao identificacao, InformacaoPessoal informacaoPessoal) {
         this.identificacao = identificacao;
         this.informacaoPessoal = informacaoPessoal;
+        this.mensagens = new ArrayList<>();
     }
 
     public Identificacao getIdentificacao() {

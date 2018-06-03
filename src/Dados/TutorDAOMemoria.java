@@ -1,18 +1,50 @@
 package Dados;
-/*
-import Classes.Dominio.Tutor;
 
-public class TutorDAOMemoria {
+import Dominio.Identificacao;
+import Dominio.Tutor;
+import java.util.ArrayList;
 
-	private ArrayList<Tutor> tutores;
+public class TutorDAOMemoria implements TutorDAO{
+    private ArrayList<Tutor> tutores;
 
-	public abstract void inserirTutor(Tutor tutor);
+    public TutorDAOMemoria() {
+        this.tutores = new ArrayList<>();
+    }
+    
+    @Override
+    public Boolean inserirTutor(Tutor tutor) {
+        if (getTutor(tutor.getIdentificacao()) == null){
+            tutores.add(tutor);
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-	public abstract void removerTutor(Tutor tutor);
+    @Override
+    public void removerTutor(Tutor tutor) {
+        tutores.remove(tutor);
+    }
 
-	public abstract void editarTutor(Tutor old, Tutor new);
+    @Override
+    public void editarTutor(Tutor antigo, Tutor novo) {
+        tutores.set(tutores.indexOf(antigo),novo);
+    }
 
-	public abstract ArrayList<Tutor> listarTutores();
-
+    @Override
+    public ArrayList<Tutor> listarTutores(){
+        return tutores;
+    }
+    
+    @Override
+    public Tutor getTutor(Identificacao idEntrar){            
+        for (Tutor i : tutores){
+            if  (i.getIdentificacao().getUsuario().equals(idEntrar.getUsuario())){
+                if (i.getIdentificacao().getUsuario().equals(idEntrar.getUsuario())){
+                    return i;
+                }
+            }
+        }
+        return null;
+    }
 }
-*/

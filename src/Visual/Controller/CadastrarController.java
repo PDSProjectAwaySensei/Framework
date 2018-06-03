@@ -5,56 +5,71 @@
  */
 package Visual.Controller;
 
-import com.jfoenix.controls.JFXButton;
+import Servico.Fachada;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import Servico.Fachada;
-import java.io.IOException;
+import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
  *
  * @author jeck
  */
-public class EntrarController implements Initializable {
+public class CadastrarController implements Initializable {
 
     @FXML
-    private JFXButton buttonLogin;
+    private Button cancel;
     @FXML
-    private JFXButton buttonCancelar;
+    private Button buttonCadastrar;
+    @FXML
+    private Button buttonCancelar;
     @FXML
     private JFXTextField textUsuario;
+    @FXML
+    private JFXTextField textMail;
     @FXML
     private JFXPasswordField textSenha;
 
     /**
      * Initializes the controller class.
      */
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
 
     @FXML
-    private void entrar(ActionEvent event) throws IOException {
+    private void cadastrar(ActionEvent event) throws IOException {
         Fachada fachada = Fachada.getInstancia();
-        fachada.usuarioEntrar(textUsuario.getText(), textSenha.getText());
-        limparCampos();
+        Boolean sucessoCadastro = fachada.usuarioCadastrar(textUsuario.getText(), textMail.getText(), textSenha.getText());
+        if (sucessoCadastro){
+            voltar();
+        } else {
+            //Nao deu certo
+        }
     }
-    
+
     @FXML
     private void cancelar(ActionEvent event) throws IOException {
+        voltar();
+    }
+    
+    private void limparCampos(){
+        this.textUsuario.clear();
+        this.textMail.clear();
+        this.textSenha.clear();
+    }
+    
+    private void voltar() throws IOException{
         limparCampos();
         Fachada fachada = Fachada.getInstancia();        
         fachada.telaInicial();
     }
     
-    private void limparCampos(){
-        this.textUsuario.clear();
-        this.textSenha.clear();
-    }
 }

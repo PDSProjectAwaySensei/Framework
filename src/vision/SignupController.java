@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Visual.Controller;
+package vision;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -13,48 +12,42 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import Servico.Fachada;
-import java.io.IOException;
+import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
  *
  * @author jeck
  */
-public class EntrarController implements Initializable {
+public class SignupController implements Initializable {
 
     @FXML
-    private JFXButton buttonLogin;
+    private Button cancel;
     @FXML
-    private JFXButton buttonCancelar;
+    private Button buttonCadastrar;
+    @FXML
+    private Button buttonCancelar;
     @FXML
     private JFXTextField textUsuario;
+    @FXML
+    private JFXTextField textMail;
     @FXML
     private JFXPasswordField textSenha;
 
     /**
      * Initializes the controller class.
      */
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
 
     @FXML
-    private void entrar(ActionEvent event) throws IOException {
-        Fachada fachada = Fachada.getInstancia();
-        fachada.usuarioEntrar(textUsuario.getText(), textSenha.getText());
-        limparCampos();
+    private void cadastrar(ActionEvent event) {
     }
-    
+
     @FXML
-    private void cancelar(ActionEvent event) throws IOException {
-        limparCampos();
-        Fachada fachada = Fachada.getInstancia();        
-        fachada.telaInicial();
+    private void cancelar(ActionEvent event) {
     }
     
-    private void limparCampos(){
-        this.textUsuario.clear();
-        this.textSenha.clear();
-    }
 }

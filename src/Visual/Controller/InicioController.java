@@ -40,7 +40,9 @@ public class InicioController implements Initializable {
     }
 
     @FXML
-    private void abrirCadastrar(ActionEvent event) {
+    private void abrirCadastrar(ActionEvent event) throws IOException {
+        Fachada fachada = Fachada.getInstancia();
+        fachada.telaCadastrar();
     }
     
 }
