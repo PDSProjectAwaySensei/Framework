@@ -113,8 +113,7 @@ public class Fachada {
         Stage stageListaTutores = new Stage();
         FXMLLoader loaderTelaMudarTutor = (new FXMLLoader(getClass().getResource("/Visual/fxml/MudarTutor.fxml")));
         loaderTelaMudarTutor.setController(new MudarTutorController(usuarioServico.getTutores(), aluno));
-        Scene telaMudarTutor = new Scene(loaderTelaMudarTutor.load());
-        stageListaTutores.setScene(telaMudarTutor);
+        stageListaTutores.setScene(new Scene(loaderTelaMudarTutor.load()));
         stageListaTutores.show();
     }
     
@@ -124,12 +123,11 @@ public class Fachada {
         telaEntrar();
     }
 
-    public void telaNovaTarefa() throws IOException {
+    public void telaNovaTarefa(Tutor tutor) throws IOException {
         Stage stageNovaTarefa = new Stage();
         FXMLLoader loaderTelaNovaTarefa = (new FXMLLoader(getClass().getResource("/Visual/fxml/NovaTarefa.fxml")));
-        loaderTelaNovaTarefa.setController(new NovaTarefaController());
-        Scene telaNovaTarefa = new Scene(loaderTelaNovaTarefa.load());
-        stageNovaTarefa.setScene(telaNovaTarefa);
+        loaderTelaNovaTarefa.setController(new NovaTarefaController(tutor));
+        stageNovaTarefa.setScene(new Scene(loaderTelaNovaTarefa.load()));
         stageNovaTarefa.show();
     }
     

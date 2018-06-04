@@ -40,16 +40,25 @@ public class NovaTarefaController implements Initializable {
     @FXML
     private JFXButton buttonCriarTarefa;
 
+    public NovaTarefaController(Tutor tutor) {
+        this.tutor = tutor;
+    }
+
     /**
      * Initializes the controller class.
      */
+    
+    
 
     @FXML
     private void criarAtividade(ActionEvent event) {
+        // PONTO FLEXÍVEL
+        
     }
 
     @FXML
     private void cancelar(ActionEvent event) {
+        ((JFXButton)event.getTarget()).getScene().getWindow().hide();
     }
 
     @FXML
@@ -67,7 +76,7 @@ public class NovaTarefaController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //Do Nothing
     }
     
 }

@@ -64,6 +64,7 @@ public class TutorController implements Initializable {
         textNome.setText(tutor.getInformacaoPessoal().getNome());        
         textEmail.setText(tutor.getInformacaoPessoal().getEmail());        
         textDescricao.setText(tutor.getInformacaoPessoal().getNome());
+        desabilitarCampos();
     }    
 
     @FXML
@@ -108,7 +109,7 @@ public class TutorController implements Initializable {
 
     @FXML
     private void adicionaTarefa(ActionEvent event) throws IOException {
-        Fachada.getInstancia().telaNovaTarefa();
+        Fachada.getInstancia().telaNovaTarefa(tutor);
     }
 
     @FXML
