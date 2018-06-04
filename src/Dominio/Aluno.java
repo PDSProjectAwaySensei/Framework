@@ -9,6 +9,7 @@ public class Aluno extends Usuario {
     
     public Aluno(Identificacao identificacao, InformacaoPessoal informacaoPessoal) {
         super(identificacao, informacaoPessoal);
+        curso = null;
     }
 
     public Aluno(Curso curso, Identificacao identificacao, InformacaoPessoal informacaoPessoal) {

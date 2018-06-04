@@ -36,4 +36,10 @@ public class Framework extends Application {
 /* Abrir a interface de Tutor DONE*/
 /* Adicionar demais classes DONE*/
 /* Abrir janelas para todas as acoes */
-/* Editar Perfil */
+/* Editar Perfil Done*/
+/* Colocar Sensei no Aluno */
+/* Criar Tarefa */
+/* Mandar Mensagem */
+
+/* Passar o salvarPerfil para a fachada */
+/* Quando o aluno concluir??*/

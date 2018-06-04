@@ -8,6 +8,8 @@ public class Tutor extends Usuario {
 
     public Tutor(Identificacao identificacao, InformacaoPessoal informacaoPessoal) {
         super(identificacao, informacaoPessoal);
+        listaDeCursos = new ArrayList<>();
+        listaDeTarefasSalvas = new ArrayList<>();
     }
 
     public Tutor(ArrayList<Curso> listaDeCursos, ArrayList<Tarefa> listaDeTarefasSalvas, Identificacao identificacao, InformacaoPessoal informacaoPessoal) {

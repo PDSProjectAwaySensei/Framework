@@ -10,6 +10,7 @@ import Dominio.Tutor;
 import Dominio.Usuario;
 import Visual.Controller.AlunoController;
 import Visual.Controller.TutorController;
+import Visual.Controller.MudarTutorController;
 import java.io.IOException;
 import java.lang.String;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +25,7 @@ public class Fachada {
     public static Fachada instancia;
     
     protected UsuarioServico usuarioServico;
+    protected AlunoServico alunoServico;
     
     private Stage stage;
     
@@ -36,6 +38,14 @@ public class Fachada {
             instancia = new Fachada();
         }
         return instancia;
+    }
+
+    public UsuarioServico getUsuarioServico() {
+        return usuarioServico;
+    }
+
+    public AlunoServico getAlunoServico() {
+        return alunoServico;
     }
     
     public void iniciar(Stage primaryStage) throws IOException{
@@ -88,5 +98,20 @@ public class Fachada {
     public Boolean usuarioCadastrar(String usuario, String mail, String senha) {
         Boolean sucessoCadastro = usuarioServico.usuarioCadastrar(usuario, mail, senha);
         return sucessoCadastro;
+    }
+
+    public void telaMudarTutor(Aluno aluno) throws IOException {
+        Stage stageListaTutores = new Stage();
+        FXMLLoader loaderTelaMudarTutor = (new FXMLLoader(getClass().getResource("/Visual/fxml/MudarTutor.fxml")));
+        loaderTelaMudarTutor.setController(new MudarTutorController(usuarioServico.getTutores(), aluno));
+        Scene telaMudarTutor = new Scene(loaderTelaMudarTutor.load());
+        stageListaTutores.setScene(telaMudarTutor);
+        stageListaTutores.show();
+    }
+    
+    public void mudarTutor(Aluno aluno, Tutor tutor) throws IOException{
+        alunoServico.mudarTutor(aluno, tutor);
+        //Desloga o Aluno apos mudar Sensei
+        telaEntrar();
     }
 }

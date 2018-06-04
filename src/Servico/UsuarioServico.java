@@ -8,6 +8,7 @@ import Dominio.Usuario;
 import Dominio.Identificacao;
 import Dominio.InformacaoPessoal;
 import Dominio.Tutor;
+import java.util.ArrayList;
 
 /**
  *
@@ -48,5 +49,17 @@ public class UsuarioServico {
         Aluno novoAluno = new Aluno(new Identificacao(usuario, senha), 
                                     new InformacaoPessoal("", mail, ""));
         return alunoDAO.inserirAluno(novoAluno);
+    }
+    
+    public void salvarPerfil(Usuario antigo, Usuario novo){
+        if (antigo instanceof  Aluno && novo instanceof Aluno){
+            alunoDAO.editarAluno((Aluno) antigo, (Aluno) novo);
+        } else if (antigo instanceof  Tutor && novo instanceof Tutor){
+            tutorDAO.editarTutor((Tutor) antigo, (Tutor) novo);
+        }
+    }
+    
+    public ArrayList<Tutor> getTutores(){
+        return tutorDAO.listarTutores();
     }
 }

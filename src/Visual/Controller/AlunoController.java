@@ -6,7 +6,9 @@
 package Visual.Controller;
 
 import Dominio.Aluno;
+import Dominio.InformacaoPessoal;
 import Servico.Fachada;
+import Servico.UsuarioServico;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -43,7 +45,6 @@ public class AlunoController implements Initializable {
     @FXML
     private JFXToggleButton togglePerfilEditavel;
     
-    
     @FXML
     private JFXButton buttonSair;
     @FXML
@@ -70,6 +71,7 @@ public class AlunoController implements Initializable {
         textNome.setText(aluno.getInformacaoPessoal().getNome());        
         textEmail.setText(aluno.getInformacaoPessoal().getEmail());        
         textDescricao.setText(aluno.getInformacaoPessoal().getNome());
+        desabilitarCampos();
     }
 
     @FXML
@@ -78,6 +80,33 @@ public class AlunoController implements Initializable {
 
     @FXML
     private void desbloquearPerfil(ActionEvent event) {
+        if (togglePerfilEditavel.isSelected() ){
+            desabilitarCampos();
+        } else {
+            desabilitarCampos();
+            salvarPerfil();
+        }
+    }
+    
+    private void desabilitarCampos(){
+        textUsuario.setDisable(!textUsuario.isDisabled());
+        textNome.setDisable(!textNome.isDisabled());
+        textEmail.setDisable(!textEmail.isDisabled());
+        textDescricao.setDisable(!textDescricao.isDisabled());
+    }
+    
+    private void salvarPerfil(){
+        Aluno novo = aluno;
+        InformacaoPessoal novoPerfil = new InformacaoPessoal(textNome.getText(),
+                                                             textEmail.getText(),
+                                                             textDescricao.getText());
+        novo.setInformacaoPessoal(novoPerfil);
+        novo.getIdentificacao().setUsuario(textUsuario.getText());
+        
+        Fachada fachada = Fachada.getInstancia();
+        fachada.getUsuarioServico().salvarPerfil(aluno, novo);
+        
+        aluno = novo;
     }
 
     @FXML
@@ -87,7 +116,9 @@ public class AlunoController implements Initializable {
     }
 
     @FXML
-    private void mudarTutor(ActionEvent event) {
+    private void mudarTutor(ActionEvent event) throws IOException {
+        Fachada fachada = Fachada.getInstancia();        
+        fachada.telaMudarTutor(aluno);
     }
     
 }

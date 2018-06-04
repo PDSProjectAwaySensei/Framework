@@ -5,6 +5,7 @@
  */
 package Visual.Controller;
 
+import Dominio.InformacaoPessoal;
 import Dominio.Tutor;
 import Servico.Fachada;
 import com.jfoenix.controls.JFXButton;
@@ -71,6 +72,33 @@ public class TutorController implements Initializable {
 
     @FXML
     private void desbloquearPerfil(ActionEvent event) {
+        if (togglePerfilEditavel.isSelected() ){
+            desabilitarCampos();
+        } else {
+            desabilitarCampos();
+            salvarPerfil();
+        }
+    }
+    
+    private void desabilitarCampos(){
+        textUsuario.setDisable(!textUsuario.isDisabled());
+        textNome.setDisable(!textNome.isDisabled());
+        textEmail.setDisable(!textEmail.isDisabled());
+        textDescricao.setDisable(!textDescricao.isDisabled());
+    }
+    
+    private void salvarPerfil(){
+        Tutor novo = tutor;
+        InformacaoPessoal novoPerfil = new InformacaoPessoal(textNome.getText(),
+                                                             textEmail.getText(),
+                                                             textDescricao.getText());
+        novo.setInformacaoPessoal(novoPerfil);
+        novo.getIdentificacao().setUsuario(textUsuario.getText());
+        
+        Fachada fachada = Fachada.getInstancia();
+        fachada.getUsuarioServico().salvarPerfil(tutor, novo);
+        
+        tutor = novo;
     }
 
     @FXML
