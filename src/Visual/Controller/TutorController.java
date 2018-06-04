@@ -107,8 +107,8 @@ public class TutorController implements Initializable {
     }
 
     @FXML
-    private void adicionaTarefa(ActionEvent event) {
-        Fachada.getInstancia().telaNovaTarefa(tutor);
+    private void adicionaTarefa(ActionEvent event) throws IOException {
+        Fachada.getInstancia().telaNovaTarefa();
     }
 
     @FXML

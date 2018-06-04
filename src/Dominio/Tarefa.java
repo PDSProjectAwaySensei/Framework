@@ -1,7 +1,7 @@
 package Dominio;
 
 
-public abstract class Tarefa {
+public class Tarefa {
     private String nomeTarefa;
     private String descricao;
     private Atividade atividade;

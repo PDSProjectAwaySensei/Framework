@@ -6,11 +6,13 @@
 package Servico;
 
 import Dominio.Aluno;
+import Dominio.Tarefa;
 import Dominio.Tutor;
 import Dominio.Usuario;
 import Visual.Controller.AlunoController;
 import Visual.Controller.TutorController;
 import Visual.Controller.MudarTutorController;
+import Visual.Controller.NovaTarefaController;
 import java.io.IOException;
 import java.lang.String;
 import javafx.fxml.FXMLLoader;
@@ -26,12 +28,14 @@ public class Fachada {
     
     protected UsuarioServico usuarioServico;
     protected AlunoServico alunoServico;
+    protected TutorServico tutorServico;
     
     private Stage stage;
     
     protected Fachada(){
         usuarioServico = new UsuarioServico();
         alunoServico = new AlunoServico();
+        tutorServico = new TutorServico();
     }
     
     public static Fachada getInstancia(){
@@ -47,6 +51,10 @@ public class Fachada {
 
     public AlunoServico getAlunoServico() {
         return alunoServico;
+    }
+    
+    public TutorServico getTutorServico() {
+        return tutorServico;
     }
     
     public void iniciar(Stage primaryStage) throws IOException{
@@ -116,7 +124,16 @@ public class Fachada {
         telaEntrar();
     }
 
-    public void telaNovaTarefa(Tutor tutor) {
-        
+    public void telaNovaTarefa() throws IOException {
+        Stage stageNovaTarefa = new Stage();
+        FXMLLoader loaderTelaNovaTarefa = (new FXMLLoader(getClass().getResource("/Visual/fxml/NovaTarefa.fxml")));
+        loaderTelaNovaTarefa.setController(new NovaTarefaController());
+        Scene telaNovaTarefa = new Scene(loaderTelaNovaTarefa.load());
+        stageNovaTarefa.setScene(telaNovaTarefa);
+        stageNovaTarefa.show();
+    }
+    
+    public void novaTarefa(Tutor tutor, Tarefa tarefa){
+        tutorServico.adicionarTarefa(tutor, tarefa);
     }
 }

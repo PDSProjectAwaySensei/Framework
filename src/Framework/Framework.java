@@ -39,6 +39,7 @@ public class Framework extends Application {
 /* Editar Perfil DONE */
 /* Colocar Sensei no Aluno DONE */
 /* Criar Tarefa */
+/* Atualizar Lista de Tarefas */
 /* Mandar Mensagem */
 
 /* Passar o salvarPerfil para a fachada */
