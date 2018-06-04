@@ -44,6 +44,16 @@ public class AlunoController implements Initializable {
     private JFXTextArea textDescricao;
     @FXML
     private JFXToggleButton togglePerfilEditavel;
+
+    /* Tutor */
+    @FXML
+    private JFXTextField textTutorUsuario;
+    @FXML
+    private JFXTextField textTutorNome;
+    @FXML
+    private JFXTextField textTutorEmail;
+    @FXML
+    private JFXTextArea textTutorDescricao;
     
     @FXML
     private JFXButton buttonSair;
@@ -51,8 +61,7 @@ public class AlunoController implements Initializable {
     private JFXButton buttonFaixa;
     @FXML
     private ImageView picTutor;
-    @FXML
-    private Label textTutorNome;
+
     @FXML
     private JFXButton buttonMudarTutor;
 
@@ -72,6 +81,13 @@ public class AlunoController implements Initializable {
         textEmail.setText(aluno.getInformacaoPessoal().getEmail());        
         textDescricao.setText(aluno.getInformacaoPessoal().getNome());
         desabilitarCampos();
+        
+        if (aluno.getCurso() != null){
+            textTutorUsuario.setText(aluno.getCurso().getTutor().getIdentificacao().getUsuario());
+            textTutorNome.setText(aluno.getCurso().getTutor().getInformacaoPessoal().getNome());
+            textTutorEmail.setText(aluno.getCurso().getTutor().getInformacaoPessoal().getEmail());
+            textTutorDescricao.setText(aluno.getCurso().getTutor().getInformacaoPessoal().getDescricao() );
+        }
     }
 
     @FXML

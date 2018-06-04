@@ -93,7 +93,7 @@
             </HBox>
          </content>
       </Tab>
-      <Tab closable="false" text="Treinos">
+      <Tab closable="false" text="Tarefas">
          <content>
             <JFXListView />
          </content>
@@ -137,10 +137,10 @@
                         </ImageView>
                         <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <JFXTextField fx:id="textUsuario1" alignment="BOTTOM_LEFT" promptText="Nome de Usuario" />
-                              <JFXTextField fx:id="textNome1" alignment="BOTTOM_LEFT" promptText="Nome Completo" />
-                              <JFXTextField fx:id="textEmail1" alignment="BOTTOM_LEFT" promptText="Email" />
-                              <JFXTextArea fx:id="textDescricao1" promptText="Descriçao">
+                              <JFXTextField fx:id="textTutorUsuario" alignment="BOTTOM_LEFT" promptText="" disable="true"/>
+                              <JFXTextField fx:id="textTutorNome" alignment="BOTTOM_LEFT" promptText="" disable="true"/>
+                              <JFXTextField fx:id="textTutorEmail" alignment="BOTTOM_LEFT" promptText="" disable="true"/>
+                              <JFXTextArea fx:id="textTutorDescricao" promptText="" disable="true">
                                  <VBox.margin>
                                     <Insets top="50.0" />
                                  </VBox.margin>

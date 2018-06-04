@@ -10,6 +10,7 @@ import Dominio.Tutor;
 import Servico.Fachada;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -56,9 +57,11 @@ public class MudarTutorController implements Initializable {
     }
 
     @FXML
-    private void selecionarTutor(ActionEvent event) {
+    private void selecionarTutor(ActionEvent event) throws IOException {
         Tutor novoTutor = tutores.get(listaTutores.getSelectionModel().getSelectedIndex());
-        
+        Fachada fachada = Fachada.getInstancia();
+        fachada.mudarTutor(aluno, novoTutor);
+        cancelar(event);
     }
     
 }

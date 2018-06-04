@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class Curso {
     private Aluno aluno;
+    //Tutor Não pode ser nulo
     private Tutor tutor;
     private Pagamento pagamento;
     private boolean status;

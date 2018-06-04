@@ -32,12 +32,12 @@ public class Framework extends Application {
 
 
 /* Abrir a interface de Aluno DONE */ 
-/* Adicionar Tutor e Curso */
+/* Adicionar Tutor e Curso DONE */
 /* Abrir a interface de Tutor DONE*/
 /* Adicionar demais classes DONE*/
 /* Abrir janelas para todas as acoes */
-/* Editar Perfil Done*/
-/* Colocar Sensei no Aluno */
+/* Editar Perfil DONE */
+/* Colocar Sensei no Aluno DONE */
 /* Criar Tarefa */
 /* Mandar Mensagem */
 

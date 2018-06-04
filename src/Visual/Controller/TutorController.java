@@ -103,12 +103,12 @@ public class TutorController implements Initializable {
 
     @FXML
     private void sair(ActionEvent event) throws IOException {
-        Fachada fachada = Fachada.getInstancia();        
-        fachada.telaInicial();
+        Fachada.getInstancia().telaInicial();
     }
 
     @FXML
     private void adicionaTarefa(ActionEvent event) {
+        Fachada.getInstancia().telaNovaTarefa(tutor);
     }
 
     @FXML

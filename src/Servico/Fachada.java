@@ -31,6 +31,7 @@ public class Fachada {
     
     protected Fachada(){
         usuarioServico = new UsuarioServico();
+        alunoServico = new AlunoServico();
     }
     
     public static Fachada getInstancia(){
@@ -113,5 +114,9 @@ public class Fachada {
         alunoServico.mudarTutor(aluno, tutor);
         //Desloga o Aluno apos mudar Sensei
         telaEntrar();
+    }
+
+    public void telaNovaTarefa(Tutor tutor) {
+        
     }
 }
