@@ -5,6 +5,7 @@
  */
 package Visual.Controller;
 
+import Dominio.Curso;
 import Dominio.InformacaoPessoal;
 import Dominio.Tarefa;
 import Dominio.Tutor;
@@ -47,7 +48,7 @@ public class TutorController implements Initializable {
     @FXML
     private JFXListView tarefas;
     @FXML
-    private JFXListView<?> pupilos;
+    private JFXListView alunos;
     
     
     private Tutor tutor;
@@ -68,6 +69,7 @@ public class TutorController implements Initializable {
         desabilitarCampos();
         
         atualizarListaTarefas();
+        carregarListaDeAlunos();
     }    
 
     @FXML
@@ -143,6 +145,13 @@ public class TutorController implements Initializable {
         tutor.getListaDeTarefasSalvas().forEach((i) -> {
             tarefas.getItems().add(i.getNomeTarefa() + " : " + i.getDescricao());
         });
+    }
+
+    private void carregarListaDeAlunos() {        
+        alunos.getItems().clear();
+        for(Curso i : tutor.getListaDeCursos()){
+            alunos.getItems().add(i.getAluno().getInformacaoPessoal().getNome());
+        }
     }
     
 }
