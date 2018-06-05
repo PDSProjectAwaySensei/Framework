@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<JFXTabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@screen.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<JFXTabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@screen.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <tabs>
       <Tab closable="false" text="Perfil">
          <content>
@@ -98,13 +98,13 @@
          <content>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <JFXListView fx:id="tarefas" prefHeight="550.0" prefWidth="982.0" />
+                  <JFXListView fx:id="tarefas" prefHeight="537.0" prefWidth="966.0" />
                   <VBox prefHeight="200.0" prefWidth="250.0">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <JFXButton onAction="#adicionaTarefa" text="Nova Tarefa" />
-                              <JFXButton text="Editar">
+                              <JFXButton fx:id="buttonNovaTarefa" onAction="#adicionaTarefa" text="Nova Tarefa" />
+                              <JFXButton fx:id="buttonEditarTarefa" onAction="#editarTarefa" text="Editar">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
@@ -114,14 +114,19 @@
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </VBox.margin>
                         </VBox>
-                        <JFXButton text="Enviar Para...">
+                        <JFXButton fx:id="buttonAtualizarLista" onAction="#atualizarListaTarefas" text="Atualizar Lista">
                            <VBox.margin>
                               <Insets left="20.0" right="20.0" top="20.0" />
                            </VBox.margin>
                         </JFXButton>
-                        <JFXButton onAction="#removeTarefa" text="Deletar">
+                        <JFXButton fx:id="buttonEnviarTarefa" onAction="#enviarTarefa" text="Enviar Para...">
                            <VBox.margin>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="200.0" />
+                              <Insets left="20.0" right="20.0" top="20.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                        <JFXButton fx:id="buttonRemoverTarefa" onAction="#removerTarefa" text="Deletar">
+                           <VBox.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="160.0" />
                            </VBox.margin>
                         </JFXButton>
                      </children>

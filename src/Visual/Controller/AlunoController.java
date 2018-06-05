@@ -9,6 +9,7 @@ import Dominio.Aluno;
 import Dominio.InformacaoPessoal;
 import Servico.Fachada;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
@@ -62,6 +63,9 @@ public class AlunoController implements Initializable {
 
     @FXML
     private JFXButton buttonMudarTutor;
+    
+    @FXML
+    private JFXListView listaTarefasAluno;
 
     private Aluno aluno;
 
@@ -85,6 +89,12 @@ public class AlunoController implements Initializable {
             textTutorNome.setText(aluno.getCurso().getTutor().getInformacaoPessoal().getNome());
             textTutorEmail.setText(aluno.getCurso().getTutor().getInformacaoPessoal().getEmail());
             textTutorDescricao.setText(aluno.getCurso().getTutor().getInformacaoPessoal().getDescricao() );
+        }
+        
+        if (aluno.getCurso() != null){
+            aluno.getCurso().getListaTarefas().forEach((i) -> {
+                listaTarefasAluno.getItems().add(i.getNomeTarefa() + " : " + i.getDescricao());
+            });
         }
     }
 

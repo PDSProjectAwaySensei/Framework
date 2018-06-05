@@ -5,8 +5,10 @@
  */
 package Servico;
 
+import Dominio.Aluno;
 import Dominio.Tarefa;
 import Dominio.Tutor;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,5 +17,15 @@ import Dominio.Tutor;
 class TutorServico {
     public void adicionarTarefa(Tutor tutor, Tarefa tarefa){
         tutor.getListaDeTarefasSalvas().add(tarefa);
+    }
+
+    void removerTarefa(Tutor tutor, Tarefa tarefa) {
+        tutor.getListaDeTarefasSalvas().remove(tarefa);
+    }
+
+    void enviarTarefa(Tutor tutor, Tarefa tarefa, ArrayList<Integer> selecionados) {
+        for(int i : selecionados){
+            tutor.getListaDeCursos().get(i).getListaTarefas().add(tarefa);
+        }
     }
 }

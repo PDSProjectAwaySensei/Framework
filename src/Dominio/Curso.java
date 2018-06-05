@@ -26,6 +26,8 @@ public class Curso {
         status = false;
         listaTarefas = new ArrayList<>();
     }
+    
+    
 
     public Tutor getTutor() {
         return tutor;
@@ -58,5 +60,13 @@ public class Curso {
 
     public void setListaTarefas(ArrayList<Tarefa> listaTarefas) {
         this.listaTarefas = listaTarefas;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
     }
 }

@@ -6,6 +6,7 @@
 package Visual.Controller;
 
 import Dominio.InformacaoPessoal;
+import Dominio.Tarefa;
 import Dominio.Tutor;
 import Servico.Fachada;
 import com.jfoenix.controls.JFXButton;
@@ -44,7 +45,7 @@ public class TutorController implements Initializable {
     @FXML
     private JFXButton buttonSair;
     @FXML
-    private JFXListView<?> treinos;
+    private JFXListView tarefas;
     @FXML
     private JFXListView<?> pupilos;
     
@@ -65,6 +66,8 @@ public class TutorController implements Initializable {
         textEmail.setText(tutor.getInformacaoPessoal().getEmail());        
         textDescricao.setText(tutor.getInformacaoPessoal().getNome());
         desabilitarCampos();
+        
+        atualizarListaTarefas();
     }    
 
     @FXML
@@ -109,11 +112,37 @@ public class TutorController implements Initializable {
 
     @FXML
     private void adicionaTarefa(ActionEvent event) throws IOException {
-        Fachada.getInstancia().telaNovaTarefa(tutor);
+        Fachada.getInstancia().telaNovaTarefa(tutor, new Tarefa());
+    }
+    
+    @FXML
+    private void editarTarefa(ActionEvent event) throws IOException{
+        Tarefa tarefa = tutor.getListaDeTarefasSalvas().remove(tarefas.getSelectionModel().getSelectedIndex());
+        Fachada.getInstancia().telaNovaTarefa(tutor, tarefa);
     }
 
     @FXML
-    private void removeTarefa(ActionEvent event) {
+    private void removerTarefa(ActionEvent event) {
+        Fachada.getInstancia().removerTarefa(tutor,
+                tutor.getListaDeTarefasSalvas().get(tarefas.getSelectionModel().getSelectedIndex()));        
+    }
+    
+    @FXML
+    private void enviarTarefa(ActionEvent event) throws IOException {
+        Tarefa tarefa = tutor.getListaDeTarefasSalvas().get(tarefas.getSelectionModel().getSelectedIndex());
+        Fachada.getInstancia().telaEnviarTarefa(tutor, tarefa);
+    }
+    
+    @FXML
+    private void atualizarListaTarefas(ActionEvent event) {
+        atualizarListaTarefas();
+    }
+    
+    void atualizarListaTarefas(){
+        tarefas.getItems().clear();
+        tutor.getListaDeTarefasSalvas().forEach((i) -> {
+            tarefas.getItems().add(i.getNomeTarefa() + " : " + i.getDescricao());
+        });
     }
     
 }

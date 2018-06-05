@@ -10,11 +10,13 @@ import Dominio.Tarefa;
 import Dominio.Tutor;
 import Dominio.Usuario;
 import Visual.Controller.AlunoController;
+import Visual.Controller.EnviarTarefaController;
 import Visual.Controller.TutorController;
 import Visual.Controller.MudarTutorController;
 import Visual.Controller.NovaTarefaController;
 import java.io.IOException;
 import java.lang.String;
+import java.util.ArrayList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -123,16 +125,32 @@ public class Fachada {
         telaEntrar();
     }
 
-    public void telaNovaTarefa(Tutor tutor) throws IOException {
+    public void telaNovaTarefa(Tutor tutor, Tarefa tarefa) throws IOException {
         Stage stageNovaTarefa = new Stage();
         FXMLLoader loaderTelaNovaTarefa = (new FXMLLoader(getClass().getResource("/Visual/fxml/NovaTarefa.fxml")));
-        loaderTelaNovaTarefa.setController(new NovaTarefaController(tutor));
+        loaderTelaNovaTarefa.setController(new NovaTarefaController(tutor, tarefa));
         stageNovaTarefa.setScene(new Scene(loaderTelaNovaTarefa.load()));
         stageNovaTarefa.show();
     }
     
     public void novaTarefa(Tutor tutor, Tarefa tarefa){
         tutorServico.adicionarTarefa(tutor, tarefa);
+    }
+    
+    public void removerTarefa(Tutor tutor, Tarefa tarefa){
+        tutorServico.removerTarefa(tutor, tarefa);
+    }
+    
+    public void telaEnviarTarefa(Tutor tutor, Tarefa tarefa) throws IOException{
+        Stage stageEnviarTarefa = new Stage();
+        FXMLLoader loaderTelaEnviarTarefa = (new FXMLLoader(getClass().getResource("/Visual/fxml/EnviarTarefa.fxml")));
+        loaderTelaEnviarTarefa.setController(new EnviarTarefaController(tutor, tarefa));
+        stageEnviarTarefa.setScene(new Scene(loaderTelaEnviarTarefa.load()));
+        stageEnviarTarefa.show();
+    }
+    
+    public void enviarTarefa(Tutor tutor, Tarefa tarefa, ArrayList<Integer> selecionados){
+        tutorServico.enviarTarefa(tutor, tarefa, selecionados);
     }
     
 }

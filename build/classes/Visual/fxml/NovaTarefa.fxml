@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="404.0" stylesheets="@screen.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="404.0" stylesheets="@screen.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <JFXTextField fx:id="textNomeTarefa" text="Nome da Tarefa">
          <VBox.margin>
@@ -19,7 +19,7 @@
             <Insets bottom="20.0" top="15.0" />
          </VBox.margin>
       </JFXTextArea>
-      <JFXButton fx:id="buttonCriarAtividade" onAction="#criarAtividade" maxWidth="1.7976931348623157E308" prefHeight="82.0" text="Atividade">
+      <JFXButton fx:id="buttonCriarAtividade" maxWidth="1.7976931348623157E308" onAction="#criarAtividade" prefHeight="82.0" text="Nova Atividade">
          <VBox.margin>
             <Insets bottom="50.0" />
          </VBox.margin>

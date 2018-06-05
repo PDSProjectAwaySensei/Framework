@@ -47,8 +47,9 @@ public class NovaTarefaController implements Initializable {
     @FXML
     private JFXButton buttonCriarTarefa;
 
-    public NovaTarefaController(Tutor tutor) {
+    public NovaTarefaController(Tutor tutor, Tarefa tarefa) {
         this.tutor = tutor;
+        this.tarefa = tarefa;
     }
 
     /**
@@ -78,8 +79,9 @@ public class NovaTarefaController implements Initializable {
     @FXML
     private void criarTarefa(ActionEvent event) {
         if (tarefa.getAtividade() != null){
-
             // Inserir Tarefa no Sensei
+            tarefa.setNomeTarefa(textNomeTarefa.getText());
+            tarefa.setDescricao(textDescricao.getText());
             Fachada.getInstancia().novaTarefa(tutor, tarefa);
             cancelar(event);
         } else {
@@ -90,8 +92,10 @@ public class NovaTarefaController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //Do Nothing
-        tarefa = new Tarefa();
+        if (tarefa.getNomeTarefa() != null)
+            textNomeTarefa.setText(tarefa.getNomeTarefa());
+        if (tarefa.getDescricao() != null)
+            textDescricao.setText(tarefa.getDescricao());
     }
     
 }
