@@ -8,7 +8,6 @@ package Visual.Controller;
 import Dominio.Aluno;
 import Dominio.InformacaoPessoal;
 import Servico.Fachada;
-import Servico.UsuarioServico;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -19,7 +18,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 

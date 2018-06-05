@@ -9,14 +9,20 @@ import Dominio.Atividade;
 import Dominio.Tarefa;
 import Dominio.Tutor;
 import Servico.Fachada;
+import awaySensei.CriarAtividadeController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import static java.awt.Color.BLUE;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -27,6 +33,7 @@ import javafx.fxml.Initializable;
 
 public class NovaTarefaController implements Initializable {
     private Tutor tutor;
+    private Tarefa tarefa;
     private Atividade atividade;
     
     @FXML
@@ -51,9 +58,16 @@ public class NovaTarefaController implements Initializable {
     
 
     @FXML
-    private void criarAtividade(ActionEvent event) {
-        // PONTO FLEXÍVEL
+    private void criarAtividade(ActionEvent event) throws IOException {
+        buttonCriarAtividade.setStyle("-fx-background-color: transparent;");
         
+        Stage stageNovaAtividade = new Stage();
+        FXMLLoader loaderTelaNovaAtividade = (new FXMLLoader(getClass().getResource("/awaySensei/CriarAtividade.fxml")));
+        loaderTelaNovaAtividade.setController(new CriarAtividadeController(tarefa));
+        stageNovaAtividade.setScene(new Scene(loaderTelaNovaAtividade.load()));
+        stageNovaAtividade.show();
+        
+        // PONTO FLEXÍVEL        
     }
 
     @FXML
@@ -63,20 +77,21 @@ public class NovaTarefaController implements Initializable {
 
     @FXML
     private void criarTarefa(ActionEvent event) {
-        if (atividade != null){
-            Tarefa novaTarefa = new Tarefa(textNomeTarefa.getText(), 
-                                           textDescricao.getText(), atividade);
+        if (tarefa.getAtividade() != null){
+
             // Inserir Tarefa no Sensei
-            Fachada.getInstancia().novaTarefa(tutor, novaTarefa);
+            Fachada.getInstancia().novaTarefa(tutor, tarefa);
             cancelar(event);
         } else {
             //Não Criar Tarefa
+            buttonCriarAtividade.setStyle("-fx-background-color: red;");
         }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //Do Nothing
+        tarefa = new Tarefa();
     }
     
 }

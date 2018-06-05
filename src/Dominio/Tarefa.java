@@ -12,6 +12,8 @@ public class Tarefa {
         this.atividade = atividade;
     }
 
+    public Tarefa() { }
+
     public String getNomeTarefa() {
         return nomeTarefa;
     }
