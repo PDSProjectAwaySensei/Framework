@@ -22,12 +22,7 @@ public class UsuarioServico {
         this.alunoDAO = new AlunoDAOMemoria();
         this.tutorDAO = new TutorDAOMemoria();
         
-        Aluno x = new Aluno(new Identificacao("alu", "123"), 
-                            new InformacaoPessoal("nome", "mail", "descricao"));
-        Tutor y = new Tutor(new Identificacao("tut", "123"), 
-                            new InformacaoPessoal("nome", "mail", "descricao"));
-        alunoDAO.inserirAluno(x);
-        tutorDAO.inserirTutor(y);
+        criarTestes();
     }    
     
     Usuario usuarioEntrar(String usuario, String senha){
@@ -61,5 +56,23 @@ public class UsuarioServico {
     
     public ArrayList<Tutor> getTutores(){
         return tutorDAO.listarTutores();
+    }
+
+    private void criarTestes() {        
+        Aluno x = new Aluno(new Identificacao("aluno", "123"), 
+                            new InformacaoPessoal("Aluno de Testes", "@t.com", "Aqui fica a Descrição do Aluno!"));
+        Tutor y = new Tutor(new Identificacao("tutor", "123"), 
+                            new InformacaoPessoal("Tutor da Silva", "tutoria@awaySensei.com.br", "Professor de Testes do awaySensei."));
+        Tutor z = new Tutor(new Identificacao("tutor2", "123"), 
+                            new InformacaoPessoal("Segundo Tutor de Testes", "tutoria@awaySensei.com.br", "Professor de Testes do awaySensei."));
+        Tutor a = new Tutor(new Identificacao("francisco", "francisco"), 
+                            new InformacaoPessoal("Francisco Soarez da Silva", "francisco@awaySensei.com.br", "Professor de alto nível do awaySensei."));
+        Aluno b = new Aluno(new Identificacao("alu", "123"), 
+                            new InformacaoPessoal("Pedro Pereira Pedroso", "ppp@gmail.com", "Aluno do awaySensei!"));
+        alunoDAO.inserirAluno(x);
+        tutorDAO.inserirTutor(y);
+        tutorDAO.inserirTutor(z);
+        tutorDAO.inserirTutor(a);
+        alunoDAO.inserirAluno(b);
     }
 }

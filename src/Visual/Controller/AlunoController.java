@@ -66,6 +66,12 @@ public class AlunoController implements Initializable {
     
     @FXML
     private JFXListView listaTarefasAluno;
+    @FXML
+    private JFXButton buttonResponderTarefa;
+    @FXML
+    private JFXButton buttonRefazerTarefa;
+    @FXML
+    private JFXButton buttonCancelarTarefa;
 
     private Aluno aluno;
 
@@ -96,6 +102,11 @@ public class AlunoController implements Initializable {
                 listaTarefasAluno.getItems().add(i.getNomeTarefa() + " : " + i.getDescricao());
             });
         }
+        /*
+        buttonResponderTarefa.setDisable(true);
+        buttonRefazerTarefa.setDisable(true);
+        buttonCancelarTarefa.setDisable(true);
+        */
     }
 
     @FXML
@@ -145,4 +156,31 @@ public class AlunoController implements Initializable {
         fachada.telaMudarTutor(aluno);
     }
     
+    ///////////////////////////////////////////////////////////////////////////
+    @FXML
+    private void responderTarefa(ActionEvent event) throws IOException {
+        //TODO
+    }
+    
+    @FXML
+    private void atualizarListaTarefas(ActionEvent event) throws IOException {
+        //TODO
+    }
+    
+    @FXML
+    private void removerTarefa(ActionEvent event) throws IOException {
+        //TODO
+    }
+    ////////////////////////////////////////////////////////////////////////////
+    
+    @FXML
+    private void refazerTarefa(ActionEvent event) throws IOException {
+        //TODO
+    }
+    @FXML
+    private void verAvaliacao(ActionEvent event) throws IOException {
+        //TODO
+    }
+    
+
 }

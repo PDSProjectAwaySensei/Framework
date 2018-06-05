@@ -13,7 +13,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -95,16 +94,46 @@
       </Tab>
       <Tab closable="false" text="Tarefas">
          <content>
-            <JFXListView fx:id="listaTarefasAluno" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <JFXListView fx:id="listaTarefasAluno" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="970.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <VBox maxWidth="250.0" prefWidth="250.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <JFXButton fx:id="buttonResponderTarefa" onAction="#responderTarefa" text="Responder Tarefa" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <JFXButton fx:id="buttonAtualizarLista" onAction="#atualizarListaTarefas" text="Atualizar Lista">
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" top="20.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                        <JFXButton fx:id="buttonRemoverTarefa" onAction="#removerTarefa" text="Cancelar Tarefa">
+                           <VBox.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="160.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
          </content>
       </Tab>
       <Tab text="Progresso">
          <content>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <VBox alignment="CENTER" opacity="0.51" prefHeight="550.0" prefWidth="453.0" HBox.hgrow="ALWAYS">
+                  <VBox alignment="CENTER" opacity="0.51" prefHeight="550.0" prefWidth="0.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="500.0">
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="569.0">
                            <children>
                               <Label text="Faixa Atual">
                                  <font>
@@ -116,10 +145,17 @@
                         </VBox>
                         <JFXButton id="solicitarProf" alignment="CENTER" text="Soliticar Proficiencia" />
                      </children></VBox>
-                  <StackPane prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="550.0" prefWidth="820.0">
                      <children>
-                        <JFXTreeTableView prefHeight="550.0" prefWidth="615.0" />
-                     </children></StackPane>
+                        <JFXListView fx:id="listaTarefasAlunoConcluidas" maxWidth="1.7976931348623157E308" prefHeight="523.0" prefWidth="820.0" />
+                        <AnchorPane prefHeight="107.0" prefWidth="820.0">
+                           <children>
+                              <JFXButton fx:id="buttonRefazerTarefa" layoutX="616.0" layoutY="6.0" onAction="#refazerTarefa" text="Refazer Tarefa" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                              <JFXButton fx:id="buttonVerAvaliacao" layoutX="-1.0" onAction="#verAvaliacao" text="Ver Avaliação" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
                </children>
             </HBox>
          </content>

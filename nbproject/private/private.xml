@@ -3,7 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/jeckson/Documents/Framework/src/Visual/Controller/TutorController.java</file>
+            <file>file:/C:/Users/jeckson/Documents/Framework/src/Servico/TutorServico.java</file>
+            <file>file:/C:/Users/jeckson/Documents/Framework/src/Servico/Fachada.java</file>
+            <file>file:/C:/Users/jeckson/Documents/Framework/src/Dominio/Tarefa.java</file>
+            <file>file:/C:/Users/jeckson/Documents/Framework/src/Servico/AlunoServico.java</file>
+            <file>file:/C:/Users/jeckson/Documents/Framework/src/Visual/Controller/EnviarTarefaController.java</file>
+            <file>file:/C:/Users/jeckson/Documents/Framework/src/Visual/Controller/EntrarController.java</file>
+            <file>file:/C:/Users/jeckson/Documents/Framework/src/awaySensei/CriarAtividadeController.java</file>
             <file>file:/C:/Users/jeckson/Documents/Framework/src/Visual/Controller/NovaTarefaController.java</file>
+            <file>file:/C:/Users/jeckson/Documents/Framework/src/Visual/Controller/AlunoController.java</file>
+            <file>file:/C:/Users/jeckson/Documents/Framework/src/Visual/Controller/MudarTutorController.java</file>
         </group>
     </open-files>
 </project-private>
