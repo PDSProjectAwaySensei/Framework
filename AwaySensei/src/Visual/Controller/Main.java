@@ -147,4 +147,11 @@ public class Main {
         stageVerTarefaCorrigida.setScene(new Scene(loaderTelaVerTarefaCorrigida.load()));
         stageVerTarefaCorrigida.show();
     }
+
+    void telaPagarCurso() throws IOException {
+        Stage stagePagamento = new Stage();
+        FXMLLoader loaderPagamento = (new FXMLLoader(getClass().getResource("/Visual/fxml/telaPagamento.fxml")));
+        stagePagamento.setScene(new Scene(loaderPagamento.load()));
+        stagePagamento.show();
+    }
 }

@@ -191,4 +191,9 @@ public class AlunoController implements Initializable {
         Tarefa tarefa = aluno.getCurso().getListaTarefasCorrigidas().get(listaTarefasAlunoCorrigidas.getSelectionModel().getSelectedIndex());
         Main.getInstancia().telaVerAvaliacao(tarefa);
     }
+    
+    @FXML
+    private void pagarCurso(ActionEvent event) throws IOException{
+        Main.getInstancia().telaPagarCurso();
+    }
 }
