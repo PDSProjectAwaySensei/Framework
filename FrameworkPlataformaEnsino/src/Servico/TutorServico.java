@@ -6,6 +6,7 @@
 package Servico;
 
 import Dominio.Aluno;
+import Dominio.Mensagem;
 import Dominio.Tarefa;
 import Dominio.Tutor;
 import java.util.ArrayList;
@@ -27,5 +28,11 @@ class TutorServico {
         for(int i : selecionados){
             tutor.getListaDeCursos().get(i).getListaTarefas().add(tarefa);
         }
+    }
+    
+    public void enviarMensagem(Tutor tutor, Aluno aluno, String msg) {
+        Fachada fachada = Fachada.getInstancia();
+        
+        fachada.getUsuarioServico().alunoDAO.getAluno(aluno.getIdentificacao()).addMesagem(new Mensagem(tutor, aluno, msg));
     }
 }

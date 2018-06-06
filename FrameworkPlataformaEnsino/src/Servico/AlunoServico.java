@@ -8,6 +8,7 @@ package Servico;
 import Dominio.Aluno;
 import Dominio.Tutor;
 import Dominio.Curso;
+import Dominio.Mensagem;
 
 /**
  *
@@ -27,4 +28,9 @@ public class AlunoServico {
         tutor.getListaDeCursos().add(novoCurso);
     }
 
+    public void enviarMensagem(Tutor tutor, Aluno aluno, String msg) {
+        Fachada fachada = Fachada.getInstancia();
+        
+        fachada.getUsuarioServico().tutorDAO.getTutor(tutor.getIdentificacao()).addMesagem(new Mensagem(aluno, tutor, msg));
+    }
 }

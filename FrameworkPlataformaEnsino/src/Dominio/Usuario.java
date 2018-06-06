@@ -1,7 +1,5 @@
 package Dominio;
 
-import Dominio.Identificacao;
-import Dominio.InformacaoPessoal;
 import java.util.ArrayList;
 
 public abstract class Usuario {
@@ -29,5 +27,13 @@ public abstract class Usuario {
 
     public void setInformacaoPessoal(InformacaoPessoal informacaoPessoal) {
         this.informacaoPessoal = informacaoPessoal;
+    }
+    
+    public void addMesagem (Mensagem mensagem){
+        this.mensagens.add(mensagem);
+    }
+    
+    public ArrayList<Mensagem> listMesagems() {
+        return this.mensagens;
     }
 }

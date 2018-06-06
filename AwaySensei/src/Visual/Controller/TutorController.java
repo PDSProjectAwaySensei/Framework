@@ -47,7 +47,7 @@ public class TutorController implements Initializable {
     @FXML
     private JFXListView tarefas;
     @FXML
-    private JFXListView<?> pupilos;
+    private JFXListView pupilos;
     
     
     private Tutor tutor;
@@ -68,6 +68,7 @@ public class TutorController implements Initializable {
         desabilitarCampos();
         
         atualizarListaTarefas();
+        atualizarListaPupilos();
     }    
 
     @FXML
@@ -124,7 +125,7 @@ public class TutorController implements Initializable {
     @FXML
     private void removerTarefa(ActionEvent event) {
         Fachada.getInstancia().removerTarefa(tutor,
-                tutor.getListaDeTarefasSalvas().get(tarefas.getSelectionModel().getSelectedIndex()));        
+            tutor.getListaDeTarefasSalvas().get(tarefas.getSelectionModel().getSelectedIndex()));        
     }
     
     @FXML
@@ -142,6 +143,13 @@ public class TutorController implements Initializable {
         tarefas.getItems().clear();
         tutor.getListaDeTarefasSalvas().forEach((i) -> {
             tarefas.getItems().add(i.getNomeTarefa() + " : " + i.getDescricao());
+        });
+    }
+    
+    void atualizarListaPupilos(){
+        pupilos.getItems().clear();
+        tutor.getListaDeCursos().forEach((i) -> {
+            pupilos.getItems().add("Aluno: "+i.getAluno().getInformacaoPessoal().getNome());
         });
     }
     
