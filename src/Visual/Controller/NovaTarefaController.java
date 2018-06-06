@@ -13,7 +13,6 @@ import awaySensei.CriarAtividadeController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import static java.awt.Color.BLUE;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

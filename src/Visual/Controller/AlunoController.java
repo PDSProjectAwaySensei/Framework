@@ -7,6 +7,7 @@ package Visual.Controller;
 
 import Dominio.Aluno;
 import Dominio.InformacaoPessoal;
+import Dominio.Tarefa;
 import Servico.Fachada;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
@@ -146,20 +147,19 @@ public class AlunoController implements Initializable {
 
     @FXML
     private void sair(ActionEvent event) throws IOException {
-        Fachada fachada = Fachada.getInstancia();        
-        fachada.telaInicial();
+        Fachada.getInstancia().telaInicial();
     }
 
     @FXML
     private void mudarTutor(ActionEvent event) throws IOException {
-        Fachada fachada = Fachada.getInstancia();        
-        fachada.telaMudarTutor(aluno);
+        Fachada.getInstancia().telaMudarTutor(aluno);
     }
     
     ///////////////////////////////////////////////////////////////////////////
     @FXML
     private void responderTarefa(ActionEvent event) throws IOException {
-        
+        Tarefa tarefa = aluno.getCurso().getListaTarefas().get(listaTarefasAluno.getSelectionModel().getSelectedIndex());
+        Fachada.getInstancia().telaResponderTarefa(aluno, tarefa);
     }
     
     @FXML

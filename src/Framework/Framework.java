@@ -41,6 +41,7 @@ public class Framework extends Application {
 /* Criar Tarefa */
 /* Atualizar Lista de Tarefas */
 /* Mandar Mensagem */
+/* Verificar responsabilidade de tarefa concluida */
 
 /* Passar o salvarPerfil para a fachada */
 /* Quando o aluno concluir??*/

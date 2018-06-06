@@ -5,6 +5,7 @@
  */
 package Servico;
 
+import awaySensei.ResponderAtividadeController;
 import Dominio.Aluno;
 import Dominio.Tarefa;
 import Dominio.Tutor;
@@ -14,6 +15,7 @@ import Visual.Controller.EnviarTarefaController;
 import Visual.Controller.TutorController;
 import Visual.Controller.MudarTutorController;
 import Visual.Controller.NovaTarefaController;
+import awaySensei.CriarAtividadeController;
 import java.io.IOException;
 import java.lang.String;
 import java.util.ArrayList;
@@ -151,6 +153,14 @@ public class Fachada {
     
     public void enviarTarefa(Tutor tutor, Tarefa tarefa, ArrayList<Integer> selecionados){
         tutorServico.enviarTarefa(tutor, tarefa, selecionados);
+    }
+
+    public void telaResponderTarefa(Aluno aluno, Tarefa tarefa) throws IOException {
+        Stage stageResponderAtividade = new Stage();
+        FXMLLoader loaderTelaResponderAtividade = (new FXMLLoader(getClass().getResource("/awaySensei/CriarAtividade.fxml")));
+        loaderTelaResponderAtividade.setController(new ResponderAtividadeController(aluno, tarefa));
+        stageResponderAtividade.setScene(new Scene(loaderTelaResponderAtividade.load()));
+        stageResponderAtividade.show();
     }
     
 }

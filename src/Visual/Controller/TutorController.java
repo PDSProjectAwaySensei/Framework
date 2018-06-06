@@ -149,9 +149,8 @@ public class TutorController implements Initializable {
 
     private void carregarListaDeAlunos() {        
         alunos.getItems().clear();
-        for(Curso i : tutor.getListaDeCursos()){
+        tutor.getListaDeCursos().forEach((i) -> {
             alunos.getItems().add(i.getAluno().getInformacaoPessoal().getNome());
-        }
-    }
-    
+        });
+    }    
 }

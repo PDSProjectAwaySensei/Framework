@@ -135,11 +135,11 @@
             </HBox>
          </content>
       </Tab>
-      <Tab closable="false" text="Pupilos">
+      <Tab closable="false" text="Alunos">
          <content>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <JFXListView fx:id="pupilos" prefHeight="550.0" prefWidth="932.0">
+                  <JFXListView fx:id="alunos" prefHeight="550.0" prefWidth="932.0">
                      <padding>
                         <Insets left="20.0" />
                      </padding>

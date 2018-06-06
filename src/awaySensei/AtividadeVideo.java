@@ -20,7 +20,7 @@ public class AtividadeVideo extends Atividade{
     public AtividadeVideo(String linkVideoTutor, String ComVideoTutor) {
         super();
         this.linkVideoTutor = linkVideoTutor;
-        this.ComVideoTutor = ComVideoTutor;        
+        this.ComVideoTutor = ComVideoTutor;       
     }
 
     public String getLinkVideoTutor() {
