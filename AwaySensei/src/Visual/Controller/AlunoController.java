@@ -7,6 +7,7 @@ package Visual.Controller;
 
 import Dominio.Aluno;
 import Dominio.InformacaoPessoal;
+import Dominio.Tarefa;
 import Servico.Fachada;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
@@ -72,6 +73,9 @@ public class AlunoController implements Initializable {
     private JFXButton buttonRefazerTarefa;
     @FXML
     private JFXButton buttonCancelarTarefa;
+    
+    @FXML
+    private JFXListView listaTarefasAlunoCorrigidas;
 
     private Aluno aluno;
 
@@ -102,11 +106,12 @@ public class AlunoController implements Initializable {
                 listaTarefasAluno.getItems().add(i.getNomeTarefa() + " : " + i.getDescricao());
             });
         }
-        /*
-        buttonResponderTarefa.setDisable(true);
-        buttonRefazerTarefa.setDisable(true);
-        buttonCancelarTarefa.setDisable(true);
-        */
+        
+        if (aluno.getCurso() != null){
+            aluno.getCurso().getListaTarefasCorrigidas().forEach((i) -> {
+                listaTarefasAlunoCorrigidas.getItems().add(i.getNomeTarefa() + " : " + i.getDescricao());
+            });
+        }
     }
 
     @FXML
@@ -159,12 +164,16 @@ public class AlunoController implements Initializable {
     ///////////////////////////////////////////////////////////////////////////
     @FXML
     private void responderTarefa(ActionEvent event) throws IOException {
-        //TODO
+        Tarefa tarefa = aluno.getCurso().getListaTarefas().get(listaTarefasAluno.getSelectionModel().getSelectedIndex());
+        Main.getInstancia().telaResponderTarefa(aluno, tarefa);
     }
     
     @FXML
     private void atualizarListaTarefas(ActionEvent event) throws IOException {
-        //TODO
+        listaTarefasAluno.getItems().clear();
+        aluno.getCurso().getListaTarefas().forEach((i) -> {
+            listaTarefasAluno.getItems().add(i.getNomeTarefa() + " : " + i.getDescricao());
+        });
     }
     
     @FXML
@@ -179,6 +188,7 @@ public class AlunoController implements Initializable {
     }
     @FXML
     private void verAvaliacao(ActionEvent event) throws IOException {
-        //TODO
+        Tarefa tarefa = aluno.getCurso().getListaTarefasCorrigidas().get(listaTarefasAlunoCorrigidas.getSelectionModel().getSelectedIndex());
+        Main.getInstancia().telaVerAvaliacao(tarefa);
     }
 }

@@ -137,16 +137,25 @@
       </Tab>
       <Tab closable="false" text="Pupilos">
          <content>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <JFXListView fx:id="pupilos" prefHeight="550.0" prefWidth="932.0">
+                  <JFXListView fx:id="alunos" prefHeight="550.0" prefWidth="952.0">
                      <padding>
                         <Insets left="20.0" />
                      </padding>
                   </JFXListView>
-                  <VBox prefHeight="200.0" prefWidth="250.0">
+                  <VBox alignment="CENTER" prefHeight="550.0" prefWidth="250.0">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox alignment="CENTER" prefHeight="372.0" prefWidth="229.0">
+                           <children>
+                              <JFXButton fx:id="buttonCorrigirTarefas" onAction="#corrigirTarefas" text="Corrigir Tarefas">
+                                 <VBox.margin>
+                                    <Insets bottom="300.0" left="20.0" top="20.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <JFXButton text="Convidar" />
                               <JFXButton text="Desvincular">

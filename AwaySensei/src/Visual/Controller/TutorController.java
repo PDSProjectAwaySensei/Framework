@@ -5,6 +5,8 @@
  */
 package Visual.Controller;
 
+import Dominio.Aluno;
+import Dominio.Curso;
 import Dominio.InformacaoPessoal;
 import Dominio.Tarefa;
 import Dominio.Tutor;
@@ -47,8 +49,7 @@ public class TutorController implements Initializable {
     @FXML
     private JFXListView tarefas;
     @FXML
-    private JFXListView pupilos;
-    
+    private JFXListView alunos;    
     
     private Tutor tutor;
     
@@ -68,7 +69,7 @@ public class TutorController implements Initializable {
         desabilitarCampos();
         
         atualizarListaTarefas();
-        atualizarListaPupilos();
+        atualizarListaAlunos();
     }    
 
     @FXML
@@ -139,6 +140,12 @@ public class TutorController implements Initializable {
         atualizarListaTarefas();
     }
     
+    @FXML
+    private void corrigirTarefas(ActionEvent event) throws IOException {
+        Curso curso = tutor.getListaDeCursos().get(alunos.getSelectionModel().getSelectedIndex());
+        Main.getInstancia().telaEscolherTarefas(curso);
+    }
+    
     void atualizarListaTarefas(){
         tarefas.getItems().clear();
         tutor.getListaDeTarefasSalvas().forEach((i) -> {
@@ -146,11 +153,10 @@ public class TutorController implements Initializable {
         });
     }
     
-    void atualizarListaPupilos(){
-        pupilos.getItems().clear();
+    void atualizarListaAlunos(){
+        alunos.getItems().clear();
         tutor.getListaDeCursos().forEach((i) -> {
-            pupilos.getItems().add("Aluno: "+i.getAluno().getInformacaoPessoal().getNome());
+            alunos.getItems().add("Aluno: "+i.getAluno().getInformacaoPessoal().getNome());
         });
-    }
-    
+    }    
 }

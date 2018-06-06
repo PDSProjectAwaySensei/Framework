@@ -147,7 +147,7 @@
                      </children></VBox>
                   <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="550.0" prefWidth="820.0">
                      <children>
-                        <JFXListView fx:id="listaTarefasAlunoConcluidas" maxWidth="1.7976931348623157E308" prefHeight="523.0" prefWidth="820.0" />
+                        <JFXListView fx:id="listaTarefasAlunoCorrigidas" maxWidth="1.7976931348623157E308" prefHeight="523.0" prefWidth="820.0" />
                         <AnchorPane prefHeight="107.0" prefWidth="820.0">
                            <children>
                               <JFXButton fx:id="buttonRefazerTarefa" layoutX="616.0" layoutY="6.0" onAction="#refazerTarefa" text="Refazer Tarefa" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />

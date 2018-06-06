@@ -5,11 +5,13 @@ public class Tarefa {
     private String nomeTarefa;
     private String descricao;
     private Atividade atividade;
+    private Avaliacao avaliacao;
 
     public Tarefa(String nomeTarefa, String descricao, Atividade atividade) {
         this.nomeTarefa = nomeTarefa;
         this.descricao = descricao;
         this.atividade = atividade;
+        this.avaliacao = null;
     }
 
     public Tarefa() { }
@@ -36,6 +38,14 @@ public class Tarefa {
 
     public void setAtividade(Atividade atividade) {
         this.atividade = atividade;
+    }
+
+    public Avaliacao getAvaliacao() {
+        return avaliacao;
+    }
+
+    public void setAvaliacao(Avaliacao avaliacao) {
+        this.avaliacao = avaliacao;
     }
 
     

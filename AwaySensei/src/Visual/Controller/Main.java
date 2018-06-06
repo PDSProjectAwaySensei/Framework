@@ -6,6 +6,7 @@
 package Visual.Controller;
 
 import Dominio.Aluno;
+import Dominio.Curso;
 import Dominio.Tarefa;
 import Dominio.Tutor;
 import Dominio.Usuario;
@@ -16,7 +17,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
+ * CAMADA DE WORKFLOW
  * @author oem
  */
 public class Main {
@@ -105,5 +106,45 @@ public class Main {
         loaderTelaEnviarTarefa.setController(new EnviarTarefaController(tutor, tarefa));
         stageEnviarTarefa.setScene(new Scene(loaderTelaEnviarTarefa.load()));
         stageEnviarTarefa.show();
+    }
+
+    void telaResponderTarefa(Aluno aluno, Tarefa tarefa) throws IOException {
+        Stage stageResponderAtividade = new Stage(); 
+        FXMLLoader loaderTelaResponderAtividade = (new FXMLLoader(getClass().getResource("/awaySensei/CriarAtividade.fxml"))); 
+        loaderTelaResponderAtividade.setController(new ResponderAtividadeController(aluno, tarefa)); 
+        stageResponderAtividade.setScene(new Scene(loaderTelaResponderAtividade.load()));
+        stageResponderAtividade.show();
+    }
+    
+    void telaEscolherTarefas(Curso curso) throws IOException{
+        Stage stageEscolherTarefas = new Stage();
+        FXMLLoader loaderTelaEscolherTarefas = (new FXMLLoader(getClass().getResource("/Visual/fxml/EscolherTarefa.fxml")));
+        loaderTelaEscolherTarefas.setController(new EscolherTarefaController(curso));
+        stageEscolherTarefas.setScene(new Scene(loaderTelaEscolherTarefas.load()));
+        stageEscolherTarefas.show();
+    }
+
+    public void telaAvaliarTarefa(Curso curso, Tarefa tarefa) throws IOException {
+        //Abrir Tarefa Bloqueada
+        Stage stageVerAtividade = new Stage(); 
+        FXMLLoader loaderTelaVerAtividade = (new FXMLLoader(getClass().getResource("/awaySensei/CriarAtividade.fxml"))); 
+        loaderTelaVerAtividade.setController(new VerAtividadeController(tarefa)); 
+        stageVerAtividade.setScene(new Scene(loaderTelaVerAtividade.load()));
+        stageVerAtividade.show();
+        
+        //Abrir Tela de Corrigir
+        Stage stageCorrigirTarefa = new Stage();
+        FXMLLoader loaderTelaCorrigirTarefa = (new FXMLLoader(getClass().getResource("/awaySensei/CorrigirAtividade.fxml")));
+        loaderTelaCorrigirTarefa.setController(new CorrigirAtividadeController(curso, tarefa));
+        stageCorrigirTarefa.setScene(new Scene(loaderTelaCorrigirTarefa.load()));
+        stageCorrigirTarefa.show();
+    }
+
+    void telaVerAvaliacao(Tarefa tarefa) throws IOException {
+        Stage stageVerTarefaCorrigida = new Stage();
+        FXMLLoader loaderTelaVerTarefaCorrigida = (new FXMLLoader(getClass().getResource("/awaySensei/CorrigirAtividade.fxml")));
+        loaderTelaVerTarefaCorrigida.setController(new VerTarefaCorrigidaController(tarefa));
+        stageVerTarefaCorrigida.setScene(new Scene(loaderTelaVerTarefaCorrigida.load()));
+        stageVerTarefaCorrigida.show();
     }
 }

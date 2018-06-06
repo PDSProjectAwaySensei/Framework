@@ -60,9 +60,9 @@ public class UsuarioServico {
     private void criarTestes() {        
         Aluno x = new Aluno(new Identificacao("aluno", "123"), 
                             new InformacaoPessoal("Aluno de Testes", "@t.com", "Aqui fica a Descrição do Aluno!"));
-        Tutor y = new Tutor(new Identificacao("tutor", "123"), 
+        Tutor y = new Tutor(new Identificacao("tut", "123"), 
                             new InformacaoPessoal("Tutor da Silva", "tutoria@awaySensei.com.br", "Professor de Testes do awaySensei."));
-        Tutor z = new Tutor(new Identificacao("tutor2", "123"), 
+        Tutor z = new Tutor(new Identificacao("tut2", "123"), 
                             new InformacaoPessoal("Segundo Tutor de Testes", "tutoria@awaySensei.com.br", "Professor de Testes do awaySensei."));
         Tutor a = new Tutor(new Identificacao("francisco", "francisco"), 
                             new InformacaoPessoal("Francisco Soarez da Silva", "francisco@awaySensei.com.br", "Professor de alto nível do awaySensei."));

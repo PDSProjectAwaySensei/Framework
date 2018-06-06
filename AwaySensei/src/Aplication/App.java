@@ -44,3 +44,7 @@ public class App extends Application {
 
 /* Passar o salvarPerfil para a fachada */
 /* Quando o aluno concluir??*/
+
+/*Erros conhecidos:
+    o aluno pode responder a atividade mais de uma vez
+*/

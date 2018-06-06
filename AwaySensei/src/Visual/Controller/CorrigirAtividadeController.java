@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package awaySensei;
+package Visual.Controller;
 
+import Dominio.Curso;
 import Dominio.Tarefa;
+import awaySensei.AvaliacaoComentario;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
-import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -20,24 +21,19 @@ import javafx.fxml.Initializable;
  *
  * @author jeckson
  */
-public class CriarAtividadeController implements Initializable {
+public class CorrigirAtividadeController implements Initializable {
 
     @FXML
-    private JFXTextField textLinkTutor;
-    @FXML
-    private JFXTextArea textComTutor;
-    @FXML
-    private JFXTextField textLinkAluno;
-    @FXML
-    private JFXTextArea textComAluno;
+    private JFXTextArea textAvaliacaoTutor;
     @FXML
     private JFXButton buttonCancelar;
     @FXML
     private JFXButton buttonSalvar;
-    
-    private Tarefa tarefa;
 
-    public CriarAtividadeController(Tarefa tarefa) {
+    Curso curso;
+    Tarefa tarefa;
+    CorrigirAtividadeController(Curso curso, Tarefa tarefa) {
+        this.curso = curso;
         this.tarefa = tarefa;
     }
 
@@ -46,8 +42,7 @@ public class CriarAtividadeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        textLinkAluno.setDisable(true);
-        textComAluno.setDisable(true);
+        // Do Nothing
     }    
 
     @FXML
@@ -56,10 +51,14 @@ public class CriarAtividadeController implements Initializable {
     }
 
     @FXML
-    private void criarAtividade(ActionEvent event) {
-        if (textLinkTutor.getText().isEmpty() == false) {
-            AtividadeVideo atividade = new AtividadeVideo(textLinkTutor.getText(), textComTutor.getText());
-            tarefa.setAtividade(atividade);
+    private void salvarAvaliacao(ActionEvent event) {
+        if (textAvaliacaoTutor.getText().isEmpty() == false){
+            tarefa.setAvaliacao(new AvaliacaoComentario(textAvaliacaoTutor.getText()));
+            tarefa.getAvaliacao().setAvaliada(true);
+            
+            curso.getListaTarefasCorrigidas().add(tarefa);
+            curso.getListaTarefasConcluidas().remove(tarefa);
+            
             cancelar(event);
         }
     }

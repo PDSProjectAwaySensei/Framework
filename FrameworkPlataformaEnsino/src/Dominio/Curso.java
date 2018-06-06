@@ -18,6 +18,8 @@ public class Curso {
     private Pagamento pagamento;
     private boolean status;
     private ArrayList<Tarefa> listaTarefas;
+    private ArrayList<Tarefa> listaTarefasConcluidas;
+    private ArrayList<Tarefa> listaTarefasCorrigidas;
 
     public Curso(Aluno aluno, Tutor tutor) {
         this.aluno = aluno;
@@ -25,10 +27,10 @@ public class Curso {
         pagamento = null;
         status = false;
         listaTarefas = new ArrayList<>();
+        listaTarefasConcluidas = new ArrayList<>();
+        listaTarefasCorrigidas = new ArrayList<>();        
     }
     
-    
-
     public Tutor getTutor() {
         return tutor;
     }
@@ -69,4 +71,22 @@ public class Curso {
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;
     }
+
+    public ArrayList<Tarefa> getListaTarefasConcluidas() {
+        return listaTarefasConcluidas;
+    }
+
+    public void setListaTarefasConcluidas(ArrayList<Tarefa> listaTarefasConcluidas) {
+        this.listaTarefasConcluidas = listaTarefasConcluidas;
+    }
+
+    public ArrayList<Tarefa> getListaTarefasCorrigidas() {
+        return listaTarefasCorrigidas;
+    }
+
+    public void setListaTarefasCorrigidas(ArrayList<Tarefa> listaTarefasCorrigidas) {
+        this.listaTarefasCorrigidas = listaTarefasCorrigidas;
+    }
+    
+    
 }
