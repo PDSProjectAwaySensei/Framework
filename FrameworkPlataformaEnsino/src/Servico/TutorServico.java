@@ -20,10 +20,11 @@ import java.util.ArrayList;
  */
 public class TutorServico {
     public void enviarTarefas(Identificacao aluno, ArrayList<Tarefa> tarefas, ArrayList<Aluno> selecionados){
-        for (Tutot tut : TutorDAOMemoria.getInstancia().) {
-            
+        for (Aluno selecionado : selecionados) {
+            for (Tarefa tarefa : tarefas) {
+                selecionado.getCurso().addtarefa(tarefa);
+            }
         }
-        AlunoDAOMemoria.getInstancia().getAluno(aluno).getCurso().addtarefa(tarefa);
     }
     
     public void enviarMensagem(Tutor tutor, Aluno aluno, String texto){

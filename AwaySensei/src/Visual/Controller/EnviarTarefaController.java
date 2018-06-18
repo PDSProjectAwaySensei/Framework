@@ -20,6 +20,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.SelectionMode;
 import servico.Fachada;
 
 /**
@@ -52,6 +53,7 @@ public class EnviarTarefaController implements Initializable {
         tutor.getListaDeCursos().forEach((i) -> {
             listaAlunos.getItems().add(i.getAluno().getUsuario());
             this.alunos.add(i.getAluno());
+            this.listaAlunos.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         });
     }    
 

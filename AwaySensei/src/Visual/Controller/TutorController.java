@@ -24,6 +24,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
@@ -72,6 +73,7 @@ public class TutorController implements Initializable {
         
         atualizarListaTarefas();
         atualizarListaAlunos();
+        this.tarefas.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }    
 
     @FXML

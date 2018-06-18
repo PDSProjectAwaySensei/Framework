@@ -6,11 +6,8 @@
 package Visual.Controller;
 
 import Dominio.Curso;
-import Dominio.Tarefa;
-import Visual.Controller.Main;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
