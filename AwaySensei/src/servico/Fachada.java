@@ -22,7 +22,6 @@ import java.util.ArrayList;
  */
 public class Fachada {
     public static Fachada instancia;
-    
     protected UsuarioServico usuarioServico;
     protected AlunoServico alunoServico;
     protected TutorServico tutorServico;
@@ -30,7 +29,7 @@ public class Fachada {
     
     protected Fachada(){
         this.usuarioServico = new UsuarioServico();
-        this.alunoServico = new AlunoServico();
+        this.alunoServico = new AlunoServicoAwaySensei();
         this.tutorServico = new TutorServico();
         this.tarefaServico = new TarefaServicoAwaySensei();
     }

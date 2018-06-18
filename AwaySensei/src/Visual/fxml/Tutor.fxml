@@ -81,13 +81,10 @@
                         </AnchorPane>
                         <AnchorPane id="chatMessages" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <JFXListView AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <JFXListView fx:id="mensagens" layoutX="12.0" layoutY="16.0" prefHeight="375.0" prefWidth="974.0" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
+                              <JFXTextArea fx:id="msgTexto" layoutX="12.0" layoutY="403.0" prefHeight="83.0" prefWidth="766.0" />
+                              <JFXButton fx:id="btnEnviarMensagem" layoutX="784.0" layoutY="419.0" onAction="#enviarMenssagem" prefHeight="52.0" prefWidth="161.0" text="Enviar" />
                            </children></AnchorPane>
-                        <JFXTextField id="chatImput">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </JFXTextField>
                      </children>
                   </VBox>
                </children>

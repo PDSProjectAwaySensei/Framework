@@ -52,7 +52,15 @@ public class TutorController implements Initializable {
     @FXML
     private JFXListView tarefas;
     @FXML
-    private JFXListView alunos;    
+    private JFXListView alunos;
+    @FXML
+    private JFXListView mensagens;
+    @FXML
+    private JFXListView conversas;
+    @FXML
+    private JFXButton btnEnviarMensagem;
+    @FXML
+    private JFXTextArea msgTexto;
     
     private Tutor tutor;
     
@@ -73,6 +81,7 @@ public class TutorController implements Initializable {
         
         atualizarListaTarefas();
         atualizarListaAlunos();
+        atualizarListaMenssagens();
         this.tarefas.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }    
 
@@ -158,18 +167,31 @@ public class TutorController implements Initializable {
     }
     
     void atualizarListaTarefas(){
-        tarefas.getItems().clear();
+        this.tarefas.getItems().clear();
         TutorDAOMemoria tutorDAO = TutorDAOMemoria.getInstancia();
         
-        tutor.getTarefas().forEach((i) -> {
-            tarefas.getItems().add(i.getNomeTarefa() + " : " + i.getDescricao());
+        this.tutor.getTarefas().forEach((i) -> {
+            this.tarefas.getItems().add(i.getNomeTarefa() + " : " + i.getDescricao());
         });
     }
     
     void atualizarListaAlunos(){
-        alunos.getItems().clear();
-        tutor.getListaDeCursos().forEach((i) -> {
-            alunos.getItems().add("Aluno: "+i.getAluno().getUsuario());
+        this.alunos.getItems().clear();
+        this.tutor.getListaDeCursos().forEach((i) -> {
+            this.alunos.getItems().add("Aluno: "+i.getAluno().getUsuario());
         });
-    }    
+    } 
+    
+    void atualizarListaMenssagens(){
+        this.mensagens.getItems().clear();
+        this.tutor.listMesagems().forEach((i) -> {
+            this.mensagens.getItems().add(i.getMensagem());
+        });
+    }
+    
+    @FXML
+    private void enviarMenssagem(ActionEvent event) {
+        Fachada.getInstancia().getTutorServico().enviarMensagem(this.tutor, this.tutor.getListaDeCursos().get(0).getAluno(), this.msgTexto.getText());
+        this.msgTexto.setText("");
+    }
 }

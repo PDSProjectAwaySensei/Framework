@@ -17,7 +17,7 @@ import Dominio.Mensagem;
  *
  * @author jeck
  */
-public class AlunoServico {
+public abstract class AlunoServico {
     
     public void mudarTutor(Identificacao alunoIdentificacao, Identificacao tutorIdentificacao){
         
@@ -45,8 +45,10 @@ public class AlunoServico {
         tutorNovo.addCurso(novoCurso);
     }
     
-    public void enviarMensagem(Aluno aluno, Tutor tutor, String texto){
-        Mensagem mensagem = new Mensagem(aluno, tutor, texto);
-        TutorDAOMemoria.getInstancia().getTutor(aluno.getIdentificacao()).addMesagem(mensagem);
+    public void enviarMensagem(Aluno aluno, Identificacao tutor, String texto){
+        Mensagem mensagem = new Mensagem(aluno, TutorDAOMemoria.getInstancia().getTutor(tutor), texto);
+        TutorDAOMemoria.getInstancia().getTutor(tutor).addMesagem(mensagem);
     }
+    
+    public abstract boolean pagar(Identificacao aluno);
 }

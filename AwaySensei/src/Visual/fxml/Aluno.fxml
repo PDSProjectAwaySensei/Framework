@@ -9,6 +9,7 @@
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -80,12 +81,18 @@
                         </AnchorPane>
                         <AnchorPane id="chatMessages" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <JFXListView AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <JFXListView fx:id="mensagens" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children></AnchorPane>
-                        <JFXTextField id="chatImput">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding></JFXTextField>
+                        <SplitPane prefHeight="108.0" prefWidth="1000.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="55.0" prefWidth="998.0">
+                                 <children>
+                                    <JFXTextArea fx:id="msgTexto" layoutX="6.0" layoutY="2.0" prefHeight="87.0" prefWidth="765.0" promptText="Escreva uma menssagem" />
+                                    <JFXButton fx:id="btnEnviarMenssagem" layoutX="784.0" layoutY="20.0" onAction="#enviarMenssagem" text="Enviar" />
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
                      </children>
                   </VBox>
                </children>

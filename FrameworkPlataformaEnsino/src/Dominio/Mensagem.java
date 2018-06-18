@@ -10,5 +10,25 @@ public class Mensagem {
         this.remetente = remetente;
         this.destinatario = destinatario;
         this.mensagem = mensagem;
-    }        
+    }
+
+    public boolean isLida() {
+        return lida;
+    }
+
+    public void setLida(boolean lida) {
+        this.lida = lida;
+    }
+
+    public Usuario getRemetente() {
+        return remetente;
+    }
+
+    public Usuario getDestinatario() {
+        return destinatario;
+    }
+
+    public String getMensagem() {
+        return mensagem;
+    }
 }

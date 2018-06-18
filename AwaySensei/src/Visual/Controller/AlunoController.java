@@ -73,10 +73,15 @@ public class AlunoController implements Initializable {
     private JFXButton buttonRefazerTarefa;
     @FXML
     private JFXButton buttonCancelarTarefa;
-    
     @FXML
     private JFXListView listaTarefasAlunoCorrigidas;
-
+    @FXML
+    JFXListView mensagens;
+    @FXML
+    private JFXButton btnEnviarMenssagem;
+    @FXML
+    private JFXTextArea msgTexto;
+    
     private Aluno aluno;
 
     public AlunoController(Aluno user) {
@@ -112,6 +117,8 @@ public class AlunoController implements Initializable {
                 listaTarefasAlunoCorrigidas.getItems().add(i.getNomeTarefa() + " : " + i.getDescricao());
             });
         }
+        
+        this.atualizarListaMenssagens();
     }
 
     @FXML
@@ -195,5 +202,20 @@ public class AlunoController implements Initializable {
     @FXML
     private void pagarCurso(ActionEvent event) throws IOException{
         Main.getInstancia().telaPagarCurso();
+    }
+    
+    void atualizarListaMenssagens(){
+        this.mensagens.getItems().clear();
+        if (this.aluno.listMesagems() != null && this.aluno.listMesagems().size() > 0) {
+            this.aluno.listMesagems().forEach((i) -> {
+                this.mensagens.getItems().add(i.getMensagem());
+            });
+        }
+    }
+    
+    @FXML
+    private void enviarMenssagem(ActionEvent event) {
+        Fachada.getInstancia().getAlunoServico().enviarMensagem(this.aluno, this.aluno.getCurso().getTutor(), this.msgTexto.getText());
+        this.msgTexto.setText("");
     }
 }

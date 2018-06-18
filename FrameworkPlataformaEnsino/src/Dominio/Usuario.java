@@ -3,7 +3,7 @@ package Dominio;
 import java.util.ArrayList;
 
 public abstract class Usuario {
-    private ArrayList<Mensagem> mensagens;
+    private final ArrayList<Mensagem> mensagens;
     private Identificacao identificacao;
     private InformacaoPessoal informacaoPessoal;
 

@@ -16,6 +16,7 @@ public class Curso {
     private Identificacao tutor;
     private boolean status;
     private ArrayList<Tarefa> listaTarefas;
+    public int debito;
 
     public Curso(Identificacao aluno, Identificacao tutor) {
         this.aluno = aluno;
@@ -70,5 +71,13 @@ public class Curso {
     
     public void addtarefa(Tarefa tarefa){
         this.listaTarefas.add(tarefa);
+    }
+
+    public int getDebito() {
+        return debito;
+    }
+
+    public void setDebito(int debito) {
+        this.debito = debito;
     }
 }
