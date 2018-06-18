@@ -5,12 +5,13 @@
  */
 package Visual.Controller;
 
+import Dados.AlunoDAOMemoria;
+import Dados.TutorDAOMemoria;
 import Dominio.Aluno;
-import Dominio.Curso;
 import Dominio.InformacaoPessoal;
 import Dominio.Tarefa;
 import Dominio.Tutor;
-import Servico.Fachada;
+import servico.Fachada;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextArea;
@@ -18,6 +19,7 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -102,7 +104,7 @@ public class TutorController implements Initializable {
         novo.getIdentificacao().setUsuario(textUsuario.getText());
         
         Fachada fachada = Fachada.getInstancia();
-        fachada.getUsuarioServico().salvarPerfil(tutor, novo);
+        fachada.getUsuarioServico().salvar(tutor, novo);
         
         tutor = novo;
     }
@@ -119,20 +121,27 @@ public class TutorController implements Initializable {
     
     @FXML
     private void editarTarefa(ActionEvent event) throws IOException{
-        Tarefa tarefa = tutor.getListaDeTarefasSalvas().remove(tarefas.getSelectionModel().getSelectedIndex());
-        Main.getInstancia().telaNovaTarefa(tutor, tarefa);
+//        Tarefa tarefa = tutor.getListaDeTarefasSalvas().remove(tarefas.getSelectionModel().getSelectedIndex());
+//        Main.getInstancia().telaNovaTarefa(tutor, tarefa);
     }
 
     @FXML
     private void removerTarefa(ActionEvent event) {
-        Fachada.getInstancia().removerTarefa(tutor,
-            tutor.getListaDeTarefasSalvas().get(tarefas.getSelectionModel().getSelectedIndex()));        
+//        Fachada.getInstancia().removerTarefa(tutor,
+//            tutor.getListaDeTarefasSalvas().get(tarefas.getSelectionModel().getSelectedIndex()));        
     }
     
     @FXML
     private void enviarTarefa(ActionEvent event) throws IOException {
-        Tarefa tarefa = tutor.getListaDeTarefasSalvas().get(tarefas.getSelectionModel().getSelectedIndex());
-        Main.getInstancia().telaEnviarTarefa(tutor, tarefa);
+        Tarefa tarefa = tutor.getTarefas().get(tarefas.getSelectionModel().getSelectedIndex());
+        
+        ArrayList<Tarefa> selecionadas = new ArrayList<>();
+        
+        for (Object selectedIndice : tarefas.getSelectionModel().getSelectedIndices()) {
+            selecionadas.add(tutor.getTarefas().get((Integer)selectedIndice));
+        }
+        
+        Main.getInstancia().telaEnviarTarefa(tutor, selecionadas);
     }
     
     @FXML
@@ -142,13 +151,15 @@ public class TutorController implements Initializable {
     
     @FXML
     private void corrigirTarefas(ActionEvent event) throws IOException {
-        Curso curso = tutor.getListaDeCursos().get(alunos.getSelectionModel().getSelectedIndex());
-        Main.getInstancia().telaEscolherTarefas(curso);
+//        Curso curso = tutor.getListaDeCursos().get(alunos.getSelectionModel().getSelectedIndex());
+//        Main.getInstancia().telaEscolherTarefas(curso);
     }
     
     void atualizarListaTarefas(){
         tarefas.getItems().clear();
-        tutor.getListaDeTarefasSalvas().forEach((i) -> {
+        TutorDAOMemoria tutorDAO = TutorDAOMemoria.getInstancia();
+        
+        tutor.getTarefas().forEach((i) -> {
             tarefas.getItems().add(i.getNomeTarefa() + " : " + i.getDescricao());
         });
     }
@@ -156,7 +167,7 @@ public class TutorController implements Initializable {
     void atualizarListaAlunos(){
         alunos.getItems().clear();
         tutor.getListaDeCursos().forEach((i) -> {
-            alunos.getItems().add("Aluno: "+i.getAluno().getInformacaoPessoal().getNome());
+            alunos.getItems().add("Aluno: "+i.getAluno().getUsuario());
         });
     }    
 }

@@ -6,7 +6,6 @@
 package Visual.Controller;
 
 import Dominio.Tarefa;
-import awaySensei.AvaliacaoComentario;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import java.net.URL;
@@ -38,7 +37,7 @@ public class VerTarefaCorrigidaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         buttonSalvar.setDisable(true);
-        textAvaliacaoTutor.setText(((AvaliacaoComentario)tarefa.getAvaliacao()).getAvaliacaoTutor());
+//        textAvaliacaoTutor.setText(((AvaliacaoComentario)tarefa.getAvaliacao()).getAvaliacaoTutor());
     }    
     
         @FXML

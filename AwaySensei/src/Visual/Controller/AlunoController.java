@@ -8,7 +8,7 @@ package Visual.Controller;
 import Dominio.Aluno;
 import Dominio.InformacaoPessoal;
 import Dominio.Tarefa;
-import Servico.Fachada;
+import servico.Fachada;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextArea;
@@ -95,10 +95,10 @@ public class AlunoController implements Initializable {
         desabilitarCampos();
         
         if (aluno.getCurso() != null){
-            textTutorUsuario.setText(aluno.getCurso().getTutor().getIdentificacao().getUsuario());
-            textTutorNome.setText(aluno.getCurso().getTutor().getInformacaoPessoal().getNome());
-            textTutorEmail.setText(aluno.getCurso().getTutor().getInformacaoPessoal().getEmail());
-            textTutorDescricao.setText(aluno.getCurso().getTutor().getInformacaoPessoal().getDescricao() );
+            textTutorUsuario.setText(aluno.getCurso().getTutor().getUsuario());
+//            textTutorNome.setText(aluno.getCurso().getTutor().getInformacaoPessoal().getNome());
+//            textTutorEmail.setText(aluno.getCurso().getTutor().getInformacaoPessoal().getEmail());
+//            textTutorDescricao.setText(aluno.getCurso().getTutor().getInformacaoPessoal().getDescricao() );
         }
         
         if (aluno.getCurso() != null){
@@ -144,7 +144,7 @@ public class AlunoController implements Initializable {
         novo.getIdentificacao().setUsuario(textUsuario.getText());
         
         Fachada fachada = Fachada.getInstancia();
-        fachada.getUsuarioServico().salvarPerfil(aluno, novo);
+        fachada.getUsuarioServico().salvar(aluno, novo);
         
         aluno = novo;
     }

@@ -1,8 +1,5 @@
 package Dominio;
 
-import Dominio.Identificacao;
-import Dominio.InformacaoPessoal;
-
 public class Aluno extends Usuario {
     private Curso curso;
     
@@ -16,15 +13,6 @@ public class Aluno extends Usuario {
         super(identificacao, informacaoPessoal);
         this.curso = curso;
     }
-        
-    
-/*
-	private Categoria progresso;
-
-	private Curso curso;
-
-	private Categoria categoria;
-*/
 
     public Curso getCurso() {
         return curso;

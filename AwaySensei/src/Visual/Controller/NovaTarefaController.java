@@ -8,11 +8,10 @@ package Visual.Controller;
 import Dominio.Atividade;
 import Dominio.Tarefa;
 import Dominio.Tutor;
-import Servico.Fachada;
+import awaySensei.AtividadeVideo;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import static java.awt.Color.BLUE;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,6 +21,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import servico.Fachada;
 
 /**
  * FXML Controller class
@@ -77,11 +77,14 @@ public class NovaTarefaController implements Initializable {
 
     @FXML
     private void criarTarefa(ActionEvent event) {
+        
+        System.out.println(((AtividadeVideo)this.tarefa.getAtividade()).getComVideoTutor());
+        
         if (tarefa.getAtividade() != null){
             // Inserir Tarefa no Sensei
             tarefa.setNomeTarefa(textNomeTarefa.getText());
             tarefa.setDescricao(textDescricao.getText());
-            Fachada.getInstancia().novaTarefa(tutor, tarefa);
+            Fachada.getInstancia().cadastrarTarefa(tutor, tarefa);
             cancelar(event);
         } else {
             //Não Criar Tarefa

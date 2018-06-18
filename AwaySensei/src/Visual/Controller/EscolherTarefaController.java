@@ -42,9 +42,9 @@ public class EscolherTarefaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         listaTarefasConcluidas.getItems().clear();
-        curso.getListaTarefasConcluidas().forEach((i) -> {
-            listaTarefasConcluidas.getItems().add(i.getNomeTarefa());
-        });
+//        curso.getListaTarefasConcluidas().forEach((i) -> {
+//            listaTarefasConcluidas.getItems().add(i.getNomeTarefa());
+//        });
     }    
 
     @FXML
@@ -52,9 +52,9 @@ public class EscolherTarefaController implements Initializable {
         ((JFXButton)event.getTarget()).getScene().getWindow().hide(); 
     }
 
-    @FXML
-    private void selecionarTarefa(ActionEvent event) throws IOException {
-        Tarefa tarefa = curso.getListaTarefasConcluidas().get(listaTarefasConcluidas.getSelectionModel().getSelectedIndex());
-        Main.getInstancia().telaAvaliarTarefa(curso, tarefa);
-    }
+//    @FXML
+////    private void selecionarTarefa(ActionEvent event) throws IOException {
+////        Tarefa tarefa = curso.getListaTarefasConcluidas().get(listaTarefasConcluidas.getSelectionModel().getSelectedIndex());
+////        Main.getInstancia().telaAvaliarTarefa(curso, tarefa);
+////    }
 }

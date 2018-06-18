@@ -5,7 +5,7 @@
  */
 package Visual.Controller;
 
-import Servico.Fachada;
+import servico.Fachada;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;

@@ -7,7 +7,6 @@ package Visual.Controller;
 
 import Dominio.Curso;
 import Dominio.Tarefa;
-import awaySensei.AvaliacaoComentario;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import java.net.URL;
@@ -50,17 +49,17 @@ public class CorrigirAtividadeController implements Initializable {
         ((JFXButton)event.getTarget()).getScene().getWindow().hide();
     }
 
-    @FXML
-    private void salvarAvaliacao(ActionEvent event) {
-        if (textAvaliacaoTutor.getText().isEmpty() == false){
-            tarefa.setAvaliacao(new AvaliacaoComentario(textAvaliacaoTutor.getText()));
-            tarefa.getAvaliacao().setAvaliada(true);
-            
-            curso.getListaTarefasCorrigidas().add(tarefa);
-            curso.getListaTarefasConcluidas().remove(tarefa);
-            
-            cancelar(event);
-        }
-    }
-    
+//    @FXML
+//    private void salvarAvaliacao(ActionEvent event) {
+//        if (textAvaliacaoTutor.getText().isEmpty() == false){
+//            tarefa.setAvaliacao(new AvaliacaoComentario(textAvaliacaoTutor.getText()));
+//            tarefa.getAvaliacao().setAvaliada(true);
+//            
+//            curso.getListaTarefasCorrigidas().add(tarefa);
+//            curso.getListaTarefasConcluidas().remove(tarefa);
+//            
+//            cancelar(event);
+//        }
+//    }
+//    
 }

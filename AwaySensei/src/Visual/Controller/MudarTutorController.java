@@ -7,17 +7,16 @@ package Visual.Controller;
 
 import Dominio.Aluno;
 import Dominio.Tutor;
-import Servico.Fachada;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import servico.Fachada;
 
 /**
  * FXML Controller class
@@ -59,8 +58,7 @@ public class MudarTutorController implements Initializable {
     @FXML
     private void selecionarTutor(ActionEvent event) throws IOException {
         Tutor novoTutor = tutores.get(listaTutores.getSelectionModel().getSelectedIndex());
-        Fachada fachada = Fachada.getInstancia();
-        fachada.mudarTutor(aluno, novoTutor);
+        Fachada.getInstancia().mudarTutor(aluno.getIdentificacao(), novoTutor.getIdentificacao());
         cancelar(event);
     }
     

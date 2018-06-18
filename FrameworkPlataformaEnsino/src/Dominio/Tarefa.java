@@ -5,16 +5,17 @@ public class Tarefa {
     private String nomeTarefa;
     private String descricao;
     private Atividade atividade;
-    private Avaliacao avaliacao;
+    private float resultado;
+    private boolean corrigida;
 
     public Tarefa(String nomeTarefa, String descricao, Atividade atividade) {
         this.nomeTarefa = nomeTarefa;
         this.descricao = descricao;
         this.atividade = atividade;
-        this.avaliacao = null;
+        this.corrigida = false;
     }
 
-    public Tarefa() { }
+    public Tarefa() {}
 
     public String getNomeTarefa() {
         return nomeTarefa;
@@ -40,13 +41,20 @@ public class Tarefa {
         this.atividade = atividade;
     }
 
-    public Avaliacao getAvaliacao() {
-        return avaliacao;
+    public float getResultado() {
+        return resultado;
     }
 
-    public void setAvaliacao(Avaliacao avaliacao) {
-        this.avaliacao = avaliacao;
+    public void setResultado(float resultado) {
+        this.resultado = resultado;
     }
 
+    public boolean isCorrigida() {
+        return corrigida;
+    }
+
+    public void setCorrigida(boolean corrigida) {
+        this.corrigida = corrigida;
+    }
     
 }

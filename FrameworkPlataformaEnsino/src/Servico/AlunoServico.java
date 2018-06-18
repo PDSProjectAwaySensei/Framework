@@ -5,9 +5,12 @@
  */
 package Servico;
 
+import Dados.AlunoDAOMemoria;
+import Dados.TutorDAOMemoria;
 import Dominio.Aluno;
 import Dominio.Tutor;
 import Dominio.Curso;
+import Dominio.Identificacao;
 import Dominio.Mensagem;
 
 /**
@@ -15,22 +18,35 @@ import Dominio.Mensagem;
  * @author jeck
  */
 public class AlunoServico {
-    public void mudarTutor(Aluno aluno, Tutor tutor){
-        //Remover aluno do tutor antigo SE houver
+    
+    public void mudarTutor(Identificacao alunoIdentificacao, Identificacao tutorIdentificacao){
+        
+        //Paga o aluno no DAO pela sua identificação
+        Aluno aluno = AlunoDAOMemoria.getInstancia().getAluno(alunoIdentificacao);
+        
         if (aluno.getCurso() != null) {
-            aluno.getCurso().getTutor().getListaDeCursos().remove(aluno.getCurso());
+            //Paga o tutor Anterior no DAO pela sua identificação
+            Tutor tutorAntigo = TutorDAOMemoria.getInstancia().getTutor(aluno.getCurso().getTutor());
+            
+            //Remover aluno do tutor antigo SE houver
+            if (aluno.getCurso() != null) {
+                tutorAntigo.getListaDeCursos().remove(aluno.getCurso());
+            }
         }
+        
+        //Paga o tutor Novo no DAO pela sua identificação
+        Tutor tutorNovo = TutorDAOMemoria.getInstancia().getTutor(tutorIdentificacao);
+        
         //remover remover tutor do aluno
         //adicionar novo tutor ao aluno
-        Curso novoCurso = new Curso(aluno, tutor);
+        Curso novoCurso = new Curso(alunoIdentificacao, tutorIdentificacao);
         aluno.setCurso(novoCurso);
         //adiconar aluno ao novo tutor
-        tutor.getListaDeCursos().add(novoCurso);
+        tutorNovo.addCurso(novoCurso);
     }
-
-    public void enviarMensagem(Tutor tutor, Aluno aluno, String msg) {
-        Fachada fachada = Fachada.getInstancia();
-        
-        fachada.getUsuarioServico().tutorDAO.getTutor(tutor.getIdentificacao()).addMesagem(new Mensagem(aluno, tutor, msg));
+    
+    public void enviarMensagem(Aluno aluno, Tutor tutor, String texto){
+        Mensagem mensagem = new Mensagem(aluno, tutor, texto);
+        TutorDAOMemoria.getInstancia().getTutor(aluno.getIdentificacao()).addMesagem(mensagem);
     }
 }

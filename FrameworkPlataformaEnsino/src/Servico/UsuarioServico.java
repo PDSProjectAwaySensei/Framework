@@ -18,13 +18,12 @@ public class UsuarioServico {
     TutorDAOMemoria tutorDAO;
 
     public UsuarioServico() {
-        this.alunoDAO = new AlunoDAOMemoria();
-        this.tutorDAO = new TutorDAOMemoria();
-        
+        alunoDAO = AlunoDAOMemoria.getInstancia();
+        tutorDAO = TutorDAOMemoria.getInstancia();
         criarTestes();
     }    
     
-    public Usuario usuarioEntrar(String usuario, String senha){
+    public Usuario entrar(String usuario, String senha){
         usuario = usuario.replaceAll("//s", "");
         Identificacao idEntrar = new Identificacao(usuario, senha);
         
@@ -38,14 +37,14 @@ public class UsuarioServico {
     }
     
     //Cadastra Alunos apenas
-    public Boolean usuarioCadastrar(String usuario, String mail, String senha) {
+    public Boolean cadastrar(String usuario, String mail, String senha) {
         //Validar Formato Email, Limpar Usuario, Conferir Senha
         Aluno novoAluno = new Aluno(new Identificacao(usuario, senha), 
                                     new InformacaoPessoal("", mail, ""));
         return alunoDAO.inserirAluno(novoAluno);
     }
     
-    public void salvarPerfil(Usuario antigo, Usuario novo){
+    public void salvar(Usuario antigo, Usuario novo){
         if (antigo instanceof  Aluno && novo instanceof Aluno){
             alunoDAO.editarAluno((Aluno) antigo, (Aluno) novo);
         } else if (antigo instanceof  Tutor && novo instanceof Tutor){

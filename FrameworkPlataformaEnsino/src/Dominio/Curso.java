@@ -12,44 +12,29 @@ import java.util.ArrayList;
  * @author jeck
  */
 public class Curso {
-    private Aluno aluno;
-    //Tutor Não pode ser nulo
-    private Tutor tutor;
-    private Pagamento pagamento;
+    private Identificacao aluno;
+    private Identificacao tutor;
     private boolean status;
     private ArrayList<Tarefa> listaTarefas;
-    private ArrayList<Tarefa> listaTarefasConcluidas;
-    private ArrayList<Tarefa> listaTarefasCorrigidas;
 
-    public Curso(Aluno aluno, Tutor tutor) {
+    public Curso(Identificacao aluno, Identificacao tutor) {
         this.aluno = aluno;
         this.tutor = tutor;
-        pagamento = null;
-        status = false;
-        listaTarefas = new ArrayList<>();
-        listaTarefasConcluidas = new ArrayList<>();
-        listaTarefasCorrigidas = new ArrayList<>();        
+        this.status = false;
+        this.listaTarefas = new ArrayList<>();        
     }
     
-    public Tutor getTutor() {
-        return tutor;
+    public Identificacao getTutor() {
+        return this.tutor;
     }
 
-    public void setTutor(Tutor tutor) {
+    public void setTutor(Identificacao tutor) {
         if (tutor != null)
             this.tutor = tutor;
     }
 
-    public Pagamento getPagamento() {
-        return pagamento;
-    }
-
-    public void setPagamento(Pagamento pagamento) {
-        this.pagamento = pagamento;
-    }
-
     public boolean isStatus() {
-        return status;
+        return this.status;
     }
 
     public void setStatus(boolean status) {
@@ -57,36 +42,33 @@ public class Curso {
     }
 
     public ArrayList<Tarefa> getListaTarefas() {
-        return listaTarefas;
+        return this.listaTarefas;
+    }
+    
+    public ArrayList<Tarefa> getListaTarefasCorrigidas() {
+        ArrayList<Tarefa> corrigidas = new ArrayList<>();
+        
+        for (Tarefa tarefa : this.listaTarefas) {
+            if (tarefa.isCorrigida()) {
+                corrigidas.add(tarefa);
+            }
+        }
+        return corrigidas;
     }
 
     public void setListaTarefas(ArrayList<Tarefa> listaTarefas) {
         this.listaTarefas = listaTarefas;
     }
 
-    public Aluno getAluno() {
-        return aluno;
+    public Identificacao getAluno() {
+        return this.aluno;
     }
 
-    public void setAluno(Aluno aluno) {
+    public void setAluno(Identificacao aluno) {
         this.aluno = aluno;
     }
-
-    public ArrayList<Tarefa> getListaTarefasConcluidas() {
-        return listaTarefasConcluidas;
-    }
-
-    public void setListaTarefasConcluidas(ArrayList<Tarefa> listaTarefasConcluidas) {
-        this.listaTarefasConcluidas = listaTarefasConcluidas;
-    }
-
-    public ArrayList<Tarefa> getListaTarefasCorrigidas() {
-        return listaTarefasCorrigidas;
-    }
-
-    public void setListaTarefasCorrigidas(ArrayList<Tarefa> listaTarefasCorrigidas) {
-        this.listaTarefasCorrigidas = listaTarefasCorrigidas;
-    }
     
-    
+    public void addtarefa(Tarefa tarefa){
+        this.listaTarefas.add(tarefa);
+    }
 }

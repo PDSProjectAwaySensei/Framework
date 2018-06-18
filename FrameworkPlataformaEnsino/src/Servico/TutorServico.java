@@ -5,7 +5,10 @@
  */
 package Servico;
 
+import Dados.AlunoDAOMemoria;
+import Dados.TutorDAOMemoria;
 import Dominio.Aluno;
+import Dominio.Identificacao;
 import Dominio.Mensagem;
 import Dominio.Tarefa;
 import Dominio.Tutor;
@@ -15,24 +18,28 @@ import java.util.ArrayList;
  *
  * @author jeckson
  */
-class TutorServico {
-    public void adicionarTarefa(Tutor tutor, Tarefa tarefa){
-        tutor.getListaDeTarefasSalvas().add(tarefa);
-    }
-
-    void removerTarefa(Tutor tutor, Tarefa tarefa) {
-        tutor.getListaDeTarefasSalvas().remove(tarefa);
-    }
-
-    void enviarTarefa(Tutor tutor, Tarefa tarefa, ArrayList<Integer> selecionados) {
-        for(int i : selecionados){
-            tutor.getListaDeCursos().get(i).getListaTarefas().add(tarefa);
+public class TutorServico {
+    public void enviarTarefas(Identificacao aluno, ArrayList<Tarefa> tarefas, ArrayList<Aluno> selecionados){
+        for (Tutot tut : TutorDAOMemoria.getInstancia().) {
+            
         }
+        AlunoDAOMemoria.getInstancia().getAluno(aluno).getCurso().addtarefa(tarefa);
     }
     
-    public void enviarMensagem(Tutor tutor, Aluno aluno, String msg) {
-        Fachada fachada = Fachada.getInstancia();
-        
-        fachada.getUsuarioServico().alunoDAO.getAluno(aluno.getIdentificacao()).addMesagem(new Mensagem(tutor, aluno, msg));
+    public void enviarMensagem(Tutor tutor, Aluno aluno, String texto){
+        Mensagem mensagem = new Mensagem(tutor, aluno, texto);
+        AlunoDAOMemoria.getInstancia().getAluno(aluno.getIdentificacao()).addMesagem(mensagem);
+    }
+    
+    public void cadastrar (Tutor tutor){
+        TutorDAOMemoria.getInstancia().inserirTutor(tutor);
+    }
+    
+    public Tutor logar (Identificacao tutor) {
+        return TutorDAOMemoria.getInstancia().getTutor(tutor);
+    }
+    
+    public void novaTarefa(Tutor tutor,Tarefa novaTarefa){
+        TutorDAOMemoria.getInstancia().getTutor(tutor.getIdentificacao()).addTarefa(novaTarefa);
     }
 }

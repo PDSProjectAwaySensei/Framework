@@ -1,17 +1,12 @@
 package Dominio;
 
 public abstract class Atividade {
-    private boolean concluida;
-
-    public Atividade() {
-        this.concluida = false;
+    private boolean resultado;
+    public boolean isResultado() {
+        return resultado;
     }
 
-    public boolean isConcluida() {
-        return concluida;
-    }
-
-    public void setConcluida(boolean concluida) {
-        this.concluida = concluida;
+    public void setResultado(boolean resultado) {
+        this.resultado = resultado;
     }
 }

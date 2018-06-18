@@ -5,10 +5,19 @@ import Dominio.Identificacao;
 import java.util.ArrayList;
 
 public class AlunoDAOMemoria implements AlunoDAO{
+    public static AlunoDAOMemoria instancia;
     private ArrayList<Aluno> alunos;
 
-    public AlunoDAOMemoria() {
+    private AlunoDAOMemoria() {
         this.alunos = new ArrayList<>();
+    }
+    
+    public static AlunoDAOMemoria getInstancia() {
+        if (instancia == null) {
+            instancia = new AlunoDAOMemoria();
+        }
+        
+        return instancia;
     }
     
     @Override

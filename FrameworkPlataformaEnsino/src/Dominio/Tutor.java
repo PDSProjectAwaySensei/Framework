@@ -4,34 +4,36 @@ import java.util.ArrayList;
 
 public class Tutor extends Usuario {
     private ArrayList<Curso> listaDeCursos;
-    private ArrayList<Tarefa> listaDeTarefasSalvas;
+    private ArrayList<Tarefa> tarefas;
 
     public Tutor(Identificacao identificacao, InformacaoPessoal informacaoPessoal) {
         super(identificacao, informacaoPessoal);
-        listaDeCursos = new ArrayList<>();
-        listaDeTarefasSalvas = new ArrayList<>();
+        this.listaDeCursos = new ArrayList<>();
+        this.tarefas = new ArrayList<>();
     }
 
     public Tutor(ArrayList<Curso> listaDeCursos, ArrayList<Tarefa> listaDeTarefasSalvas, Identificacao identificacao, InformacaoPessoal informacaoPessoal) {
         super(identificacao, informacaoPessoal);
         this.listaDeCursos = listaDeCursos;
-        this.listaDeTarefasSalvas = listaDeTarefasSalvas;
     }
     
     public ArrayList<Curso> getListaDeCursos() {
-        return listaDeCursos;
+        return this.listaDeCursos;
     }
 
     public void setListaDeCursos(ArrayList<Curso> listaDeCursos) {
         this.listaDeCursos = listaDeCursos;
     }
-
-    public ArrayList<Tarefa> getListaDeTarefasSalvas() {
-        return listaDeTarefasSalvas;
+    
+    public void addCurso(Curso curso) {
+        this.listaDeCursos.add(curso);
+    }
+    
+    public void addTarefa(Tarefa tarefa) {
+        this.tarefas.add(tarefa);
     }
 
-    public void setListaDeTarefasSalvas(ArrayList<Tarefa> listaDeTarefasSalvas) {
-        this.listaDeTarefasSalvas = listaDeTarefasSalvas;
+    public ArrayList<Tarefa> getTarefas() {
+        return tarefas;
     }
-
 }

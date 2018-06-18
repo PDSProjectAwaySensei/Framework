@@ -5,10 +5,12 @@
  */
 package Visual.Controller;
 
+import Dados.AlunoDAO;
+import Dados.AlunoDAOMemoria;
 import Dominio.Aluno;
+import Dominio.Identificacao;
 import Dominio.Tarefa;
 import Dominio.Tutor;
-import Servico.Fachada;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import java.net.URL;
@@ -18,6 +20,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import servico.Fachada;
 
 /**
  * FXML Controller class
@@ -34,18 +37,21 @@ public class EnviarTarefaController implements Initializable {
     private JFXButton buttonSelecionarAlunos;
     
     private Tutor tutor;
-    private Tarefa tarefa;
+    private ArrayList<Tarefa> tarefas;
+    private ArrayList<Identificacao> alunos;
 
-    public EnviarTarefaController(Tutor tutor, Tarefa tarefa) {
+    public EnviarTarefaController(Tutor tutor, ArrayList<Tarefa> tarefas) {
         this.tutor = tutor;
-        this.tarefa = tarefa;        
+        this.tarefas = tarefas;
+        this.alunos = new ArrayList<>();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         tutor.getListaDeCursos().forEach((i) -> {
-            listaAlunos.getItems().add(i.getAluno().getInformacaoPessoal().getNome());
+            listaAlunos.getItems().add(i.getAluno().getUsuario());
+            this.alunos.add(i.getAluno());
         });
     }    
 
@@ -57,12 +63,13 @@ public class EnviarTarefaController implements Initializable {
     @FXML
     private void selecionarAlunos(ActionEvent event) {
         ObservableList selectedIndices = listaAlunos.getSelectionModel().getSelectedIndices();
-        ArrayList<Integer> selecionados = new ArrayList<>();
+        
+        ArrayList<Aluno> alunos = new ArrayList<>();
         for (Object i : selectedIndices){
-            selecionados.add((Integer) i);
+            alunos.add(AlunoDAOMemoria.instancia.getAluno(this.alunos.get((Integer)i)));
         }
-        Fachada.getInstancia().enviarTarefa(tutor, tarefa, selecionados);
-
+        
+        Fachada.getInstancia().enviarTarefas(tutor.getIdentificacao(), tarefas, alunos);
     }
     
 }

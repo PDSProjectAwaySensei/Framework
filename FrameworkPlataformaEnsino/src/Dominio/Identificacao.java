@@ -25,4 +25,9 @@ public class Identificacao {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    @Override
+    public String toString() {
+        return "Identificacao{" + "usuario=" + usuario + ", senha=" + senha + '}';
+    }
 }

@@ -10,8 +10,9 @@ import Dominio.Curso;
 import Dominio.Tarefa;
 import Dominio.Tutor;
 import Dominio.Usuario;
-import Servico.Fachada;
+import servico.Fachada;
 import java.io.IOException;
+import java.util.ArrayList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -62,7 +63,7 @@ public class Main {
     public void usuarioEntrar(String usuario, String senha) throws IOException{
         Usuario user;
         Fachada fachada = Fachada.getInstancia();
-        user = fachada.getUsuarioServico().usuarioEntrar(usuario, senha);
+        user = fachada.getUsuarioServico().entrar(usuario, senha);
  
         if (user != null){
             if (user instanceof Aluno){
@@ -100,10 +101,10 @@ public class Main {
         stageNovaTarefa.show();
     }
     
-    public void telaEnviarTarefa(Tutor tutor, Tarefa tarefa) throws IOException{
+    public void telaEnviarTarefa(Tutor tutor, ArrayList<Tarefa> tarefas) throws IOException{
         Stage stageEnviarTarefa = new Stage();
         FXMLLoader loaderTelaEnviarTarefa = (new FXMLLoader(getClass().getResource("/Visual/fxml/EnviarTarefa.fxml")));
-        loaderTelaEnviarTarefa.setController(new EnviarTarefaController(tutor, tarefa));
+        loaderTelaEnviarTarefa.setController(new EnviarTarefaController(tutor, tarefas));
         stageEnviarTarefa.setScene(new Scene(loaderTelaEnviarTarefa.load()));
         stageEnviarTarefa.show();
     }

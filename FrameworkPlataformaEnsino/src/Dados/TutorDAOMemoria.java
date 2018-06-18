@@ -5,10 +5,19 @@ import Dominio.Tutor;
 import java.util.ArrayList;
 
 public class TutorDAOMemoria implements TutorDAO{
+    public static TutorDAOMemoria instancia;
     private ArrayList<Tutor> tutores;
 
-    public TutorDAOMemoria() {
+    private TutorDAOMemoria() {
         this.tutores = new ArrayList<>();
+    }
+    
+    public static TutorDAOMemoria getInstancia() {
+        if (instancia == null) {
+            instancia = new TutorDAOMemoria();
+        }
+        
+        return instancia;
     }
     
     @Override

@@ -60,7 +60,7 @@ public class CriarAtividadeController implements Initializable {
     private void criarAtividade(ActionEvent event) {
         if (textLinkTutor.getText().isEmpty() == false) {
             AtividadeVideo atividade = new AtividadeVideo(textLinkTutor.getText(), textComTutor.getText());
-            tarefa.setAtividade(atividade);
+            this.tarefa.setAtividade(atividade);
             cancelar(event);
         }
     }
