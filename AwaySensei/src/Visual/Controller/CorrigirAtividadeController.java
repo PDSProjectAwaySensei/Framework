@@ -8,7 +8,6 @@ package Visual.Controller;
 import Dominio.Curso;
 import Dominio.Tarefa;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -54,6 +53,8 @@ public class CorrigirAtividadeController implements Initializable {
     private void salvarAvaliacao(ActionEvent event) {
         if (pontos.getText().isEmpty() == false){
             tarefa.getAtividade().setResultado(Float.parseFloat(pontos.getText()));
+            
+            System.err.println("Nota atribuída:"+tarefa.getAtividade().getResultado());
             
             cancelar(event);
         }

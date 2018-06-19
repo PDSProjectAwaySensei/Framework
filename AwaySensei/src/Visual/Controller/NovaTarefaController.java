@@ -8,7 +8,6 @@ package Visual.Controller;
 import Dominio.Atividade;
 import Dominio.Tarefa;
 import Dominio.Tutor;
-import awaySensei.AtividadeVideo;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -62,7 +61,7 @@ public class NovaTarefaController implements Initializable {
         buttonCriarAtividade.setStyle("-fx-background-color: transparent;");
         
         Stage stageNovaAtividade = new Stage();
-        FXMLLoader loaderTelaNovaAtividade = (new FXMLLoader(getClass().getResource("/awaySensei/CriarAtividade.fxml")));
+        FXMLLoader loaderTelaNovaAtividade = (new FXMLLoader(getClass().getResource("/Visual/fxml/CriarAtividade.fxml")));
         loaderTelaNovaAtividade.setController(new CriarAtividadeController(tarefa));
         stageNovaAtividade.setScene(new Scene(loaderTelaNovaAtividade.load()));
         stageNovaAtividade.show();

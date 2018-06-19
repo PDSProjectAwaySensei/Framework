@@ -7,7 +7,7 @@ package Visual.Controller;
 
 import Dominio.Tarefa;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -20,7 +20,7 @@ import javafx.fxml.Initializable;
  */
 public class VerTarefaCorrigidaController implements Initializable {
     @FXML
-    private JFXTextArea textAvaliacaoTutor;
+    private JFXTextField pontos;
     @FXML
     private JFXButton buttonCancelar;
     @FXML
@@ -36,8 +36,10 @@ public class VerTarefaCorrigidaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        buttonSalvar.setDisable(true);
-//        textAvaliacaoTutor.setText(((AvaliacaoComentario)tarefa.getAvaliacao()).getAvaliacaoTutor());
+        buttonSalvar.setVisible(false);
+        buttonCancelar.setVisible(false);
+        pontos.setText("Nota: "+tarefa.getAtividade().getResultado());
+        pontos.setEditable(false);
     }    
     
         @FXML

@@ -53,7 +53,9 @@ public class EscolherTarefaController implements Initializable {
 
     @FXML
     private void selecionarTarefa(ActionEvent event) throws IOException {
-        Tarefa tarefa = curso.getTarefasRespondidas().get(listaTarefasConcluidas.getSelectionModel().getSelectedIndex());
-        Main.getInstancia().telaAvaliarTarefa(curso, tarefa);
+        if (curso.getTarefasRespondidas() != null && curso.getTarefasRespondidas().size() > 0) {
+            Tarefa tarefa = curso.getTarefasRespondidas().get(listaTarefasConcluidas.getSelectionModel().getSelectedIndex());
+            Main.getInstancia().telaAvaliarTarefa(curso, tarefa);
+        }
     }
 }

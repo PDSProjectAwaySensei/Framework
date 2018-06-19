@@ -223,6 +223,7 @@ public class AlunoController implements Initializable {
     @FXML
     private void verAvaliacao(ActionEvent event) throws IOException {
         Tarefa tarefa = aluno.getCurso().getTarefasCorrigidas().get(listaTarefasAlunoCorrigidas.getSelectionModel().getSelectedIndex());
+        System.err.println("Nota: "+tarefa.getResultado());
         Main.getInstancia().telaVerAvaliacao(tarefa);
     }
     
@@ -244,8 +245,10 @@ public class AlunoController implements Initializable {
     
     @FXML
     private void enviarMenssagem(ActionEvent event) {
-        Fachada.getInstancia().getAlunoServico().enviarMensagem(this.aluno, this.aluno.getCurso().getTutor(), this.msgTexto.getText());
-        this.msgTexto.setText("");
-        this.atualizarListaMenssagens();
+        if (this.msgTexto.getText().length() > 0) {
+            Fachada.getInstancia().getAlunoServico().enviarMensagem(this.aluno, this.aluno.getCurso().getTutor(), this.msgTexto.getText());
+            this.msgTexto.setText("");
+            this.atualizarListaMenssagens();
+        }
     }
 }

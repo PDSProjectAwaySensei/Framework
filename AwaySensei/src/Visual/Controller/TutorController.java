@@ -172,7 +172,6 @@ public class TutorController implements Initializable {
     
     @FXML
     private void enviarTarefa(ActionEvent event) throws IOException {
-        Tarefa tarefa = tutor.getTarefas().get(tarefas.getSelectionModel().getSelectedIndex());
         
         ArrayList<Tarefa> selecionadas = new ArrayList<>();
         
@@ -190,8 +189,10 @@ public class TutorController implements Initializable {
     
     @FXML
     private void corrigirTarefas(ActionEvent event) throws IOException {
-        Curso curso = tutor.getCursos().get(alunos.getSelectionModel().getSelectedIndex());
-        Main.getInstancia().telaEscolherTarefas(curso);
+        if (tutor.getCursos().get(alunos.getSelectionModel().getSelectedIndex()).getTarefasRespondidas().size() > 0) {
+            Curso curso = tutor.getCursos().get(alunos.getSelectionModel().getSelectedIndex());
+            Main.getInstancia().telaEscolherTarefas(curso);
+        }
     }
     
     void atualizarListaTarefas(){
@@ -221,9 +222,7 @@ public class TutorController implements Initializable {
         this.conversas.getItems().clear();
         
         for (Curso curso : this.tutor.getCursos()) {
-            if (curso.listMesagems() != null && curso.listMesagems().size() > 0) {
-                this.conversas.getItems().add(curso.getAluno().getUsuario());
-            }
+            this.conversas.getItems().add(curso.getAluno().getUsuario());
         }
     }
     
@@ -237,8 +236,10 @@ public class TutorController implements Initializable {
     
     @FXML
     private void enviarMenssagem(ActionEvent event) {
-        Fachada.getInstancia().getTutorServico().enviarMensagem(this.tutor, this.tutor.getCursos().get(this.conversas.getSelectionModel().getSelectedIndex()).getAluno(), this.msgTexto.getText());
-        this.msgTexto.setText("");
-        this.atualizarMenssagens(this.conversas.getSelectionModel().getSelectedIndex());
+        if (this.msgTexto.getText().length() > 0) {
+            Fachada.getInstancia().getTutorServico().enviarMensagem(this.tutor, this.tutor.getCursos().get(this.conversas.getSelectionModel().getSelectedIndex()).getAluno(), this.msgTexto.getText());
+            this.msgTexto.setText("");
+            this.atualizarMenssagens(this.conversas.getSelectionModel().getSelectedIndex());
+        }
     }
 }

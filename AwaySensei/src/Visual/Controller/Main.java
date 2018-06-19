@@ -111,7 +111,7 @@ public class Main {
 
     void telaResponderTarefa(Aluno aluno, Tarefa tarefa) throws IOException {
         Stage stageResponderAtividade = new Stage(); 
-        FXMLLoader loaderTelaResponderAtividade = (new FXMLLoader(getClass().getResource("/awaySensei/CriarAtividade.fxml"))); 
+        FXMLLoader loaderTelaResponderAtividade = (new FXMLLoader(getClass().getResource("/Visual/fxml/CriarAtividade.fxml"))); 
         loaderTelaResponderAtividade.setController(new ResponderAtividadeController(aluno, tarefa)); 
         stageResponderAtividade.setScene(new Scene(loaderTelaResponderAtividade.load()));
         stageResponderAtividade.show();
@@ -128,14 +128,14 @@ public class Main {
     public void telaAvaliarTarefa(Curso curso, Tarefa tarefa) throws IOException {
         //Abrir Tarefa Bloqueada
         Stage stageVerAtividade = new Stage(); 
-        FXMLLoader loaderTelaVerAtividade = (new FXMLLoader(getClass().getResource("/awaySensei/CriarAtividade.fxml"))); 
+        FXMLLoader loaderTelaVerAtividade = (new FXMLLoader(getClass().getResource("/Visual/fxml/CriarAtividade.fxml"))); 
         loaderTelaVerAtividade.setController(new VerAtividadeController(tarefa)); 
         stageVerAtividade.setScene(new Scene(loaderTelaVerAtividade.load()));
         stageVerAtividade.show();
         
         //Abrir Tela de Corrigir
         Stage stageCorrigirTarefa = new Stage();
-        FXMLLoader loaderTelaCorrigirTarefa = (new FXMLLoader(getClass().getResource("/awaySensei/CorrigirAtividade.fxml")));
+        FXMLLoader loaderTelaCorrigirTarefa = (new FXMLLoader(getClass().getResource("/Visual/fxml/CorrigirAtividade.fxml")));
         loaderTelaCorrigirTarefa.setController(new CorrigirAtividadeController(curso, tarefa));
         stageCorrigirTarefa.setScene(new Scene(loaderTelaCorrigirTarefa.load()));
         stageCorrigirTarefa.show();
@@ -143,7 +143,7 @@ public class Main {
 
     void telaVerAvaliacao(Tarefa tarefa) throws IOException {
         Stage stageVerTarefaCorrigida = new Stage();
-        FXMLLoader loaderTelaVerTarefaCorrigida = (new FXMLLoader(getClass().getResource("/awaySensei/CorrigirAtividade.fxml")));
+        FXMLLoader loaderTelaVerTarefaCorrigida = (new FXMLLoader(getClass().getResource("/Visual/fxml/CorrigirAtividade.fxml")));
         loaderTelaVerTarefaCorrigida.setController(new VerTarefaCorrigidaController(tarefa));
         stageVerTarefaCorrigida.setScene(new Scene(loaderTelaVerTarefaCorrigida.load()));
         stageVerTarefaCorrigida.show();

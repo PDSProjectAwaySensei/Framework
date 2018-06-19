@@ -80,8 +80,8 @@
                         </AnchorPane>
                         <AnchorPane id="chatMessages" prefHeight="500.0" prefWidth="872.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <JFXListView fx:id="mensagens" fixedCellSize="800.0" layoutX="16.0" layoutY="20.0" maxWidth="912.0" prefHeight="367.0" prefWidth="912.0" AnchorPane.bottomAnchor="114.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="19.0" />
-                              <JFXTextArea fx:id="msgTexto" layoutX="12.0" layoutY="403.0" prefHeight="83.0" prefWidth="631.0" />
+                              <JFXListView fx:id="mensagens" layoutX="16.0" layoutY="20.0" maxWidth="912.0" prefHeight="367.0" prefWidth="912.0" AnchorPane.bottomAnchor="114.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="19.0" />
+                              <JFXTextArea fx:id="msgTexto" layoutX="12.0" layoutY="403.0" prefHeight="83.0" prefWidth="631.0" promptText="Escreva uma mensagem" />
                               <JFXButton fx:id="btnEnviarMensagem" layoutX="726.0" layoutY="419.0" onAction="#enviarMenssagem" prefHeight="52.0" prefWidth="161.0" text="Enviar" />
                            </children></AnchorPane>
                      </children>
