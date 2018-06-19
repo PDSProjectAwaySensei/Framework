@@ -17,11 +17,11 @@ public class Tutor extends Usuario {
         this.listaDeCursos = listaDeCursos;
     }
     
-    public ArrayList<Curso> getListaDeCursos() {
+    public ArrayList<Curso> getCursos() {
         return this.listaDeCursos;
     }
 
-    public void setListaDeCursos(ArrayList<Curso> listaDeCursos) {
+    public void setCursos(ArrayList<Curso> listaDeCursos) {
         this.listaDeCursos = listaDeCursos;
     }
     

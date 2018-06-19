@@ -50,7 +50,7 @@ public class EnviarTarefaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        tutor.getListaDeCursos().forEach((i) -> {
+        tutor.getCursos().forEach((i) -> {
             listaAlunos.getItems().add(i.getAluno().getUsuario());
             this.alunos.add(i.getAluno());
             this.listaAlunos.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);

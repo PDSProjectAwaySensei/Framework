@@ -16,13 +16,15 @@ public class Curso {
     private Identificacao tutor;
     private boolean status;
     private ArrayList<Tarefa> listaTarefas;
+    private final ArrayList<Mensagem> mensagens;
     public int debito;
 
     public Curso(Identificacao aluno, Identificacao tutor) {
         this.aluno = aluno;
         this.tutor = tutor;
         this.status = false;
-        this.listaTarefas = new ArrayList<>();        
+        this.listaTarefas = new ArrayList<>();  
+        this.mensagens = new ArrayList<>();
     }
     
     public Identificacao getTutor() {
@@ -79,5 +81,13 @@ public class Curso {
 
     public void setDebito(int debito) {
         this.debito = debito;
+    }
+    
+    public void addMesagem (Mensagem mensagem){
+        this.mensagens.add(mensagem);
+    }
+    
+    public ArrayList<Mensagem> listMesagems() {
+        return this.mensagens;
     }
 }

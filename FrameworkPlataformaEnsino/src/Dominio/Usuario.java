@@ -3,14 +3,12 @@ package Dominio;
 import java.util.ArrayList;
 
 public abstract class Usuario {
-    private final ArrayList<Mensagem> mensagens;
     private Identificacao identificacao;
     private InformacaoPessoal informacaoPessoal;
 
     public Usuario(Identificacao identificacao, InformacaoPessoal informacaoPessoal) {
         this.identificacao = identificacao;
         this.informacaoPessoal = informacaoPessoal;
-        this.mensagens = new ArrayList<>();
     }
 
     public Identificacao getIdentificacao() {
@@ -27,13 +25,5 @@ public abstract class Usuario {
 
     public void setInformacaoPessoal(InformacaoPessoal informacaoPessoal) {
         this.informacaoPessoal = informacaoPessoal;
-    }
-    
-    public void addMesagem (Mensagem mensagem){
-        this.mensagens.add(mensagem);
-    }
-    
-    public ArrayList<Mensagem> listMesagems() {
-        return this.mensagens;
     }
 }

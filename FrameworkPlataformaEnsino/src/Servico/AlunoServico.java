@@ -30,7 +30,7 @@ public abstract class AlunoServico {
             
             //Remover aluno do tutor antigo SE houver
             if (aluno.getCurso() != null) {
-                tutorAntigo.getListaDeCursos().remove(aluno.getCurso());
+                tutorAntigo.getCursos().remove(aluno.getCurso());
             }
         }
         
@@ -47,7 +47,14 @@ public abstract class AlunoServico {
     
     public void enviarMensagem(Aluno aluno, Identificacao tutor, String texto){
         Mensagem mensagem = new Mensagem(aluno, TutorDAOMemoria.getInstancia().getTutor(tutor), texto);
-        TutorDAOMemoria.getInstancia().getTutor(tutor).addMesagem(mensagem);
+        
+        for (Curso curso : TutorDAOMemoria.getInstancia().getTutor(tutor).getCursos()) {
+            if (curso.getAluno().equals(aluno.getIdentificacao())) {
+                curso.addMesagem(mensagem);
+                return;
+            }
+        }
+        
     }
     
     public abstract boolean pagar(Identificacao aluno);

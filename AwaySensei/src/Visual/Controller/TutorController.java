@@ -8,11 +8,14 @@ package Visual.Controller;
 import Dados.AlunoDAOMemoria;
 import Dados.TutorDAOMemoria;
 import Dominio.Aluno;
+import Dominio.Curso;
 import Dominio.InformacaoPessoal;
+import Dominio.Mensagem;
 import Dominio.Tarefa;
 import Dominio.Tutor;
 import servico.Fachada;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListCell;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -27,6 +30,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -79,10 +83,34 @@ public class TutorController implements Initializable {
         textDescricao.setText(tutor.getInformacaoPessoal().getNome());
         desabilitarCampos();
         
-        atualizarListaTarefas();
-        atualizarListaAlunos();
-        atualizarListaMenssagens();
+        this.atualizarListaTarefas();
+        this.atualizarListaAlunos();
+        this.atualizarConversas();
         this.tarefas.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    
+        this.mensagens.setCellFactory(new Callback<JFXListView<Mensagem>, JFXListCell<Mensagem>>() {
+            @Override
+            public JFXListCell<Mensagem> call(JFXListView<Mensagem> param) {
+                return new JFXListCell<Mensagem>() {
+                    @Override
+                    public void updateItem(Mensagem item, boolean empty) {
+                        super.updateItem(item, empty);
+                        
+                        if (item == null || empty) {
+                            setText(null);
+                        } else {
+                            if (item.getRemetente() instanceof Tutor) {
+                                setStyle("-fx-alignment: CENTER-RIGHT; -fx-control-inner-background: derive(palegreen, 50%);");
+                            } else {
+                                this.setStyle("-fx-alignment: CENTER-LEFT;");
+                            }
+                            
+                            setText(item.getMensagem());
+                        }
+                    }
+                };
+            }
+        });
     }    
 
     @FXML
@@ -177,21 +205,40 @@ public class TutorController implements Initializable {
     
     void atualizarListaAlunos(){
         this.alunos.getItems().clear();
-        this.tutor.getListaDeCursos().forEach((i) -> {
+        this.tutor.getCursos().forEach((i) -> {
             this.alunos.getItems().add("Aluno: "+i.getAluno().getUsuario());
         });
     } 
     
-    void atualizarListaMenssagens(){
+    void atualizarMenssagens(int index){
         this.mensagens.getItems().clear();
-        this.tutor.listMesagems().forEach((i) -> {
-            this.mensagens.getItems().add(i.getMensagem());
+        this.tutor.getCursos().get(index).listMesagems().forEach((i) -> {
+            this.mensagens.getItems().add(i);
         });
+    }
+    
+    void atualizarConversas(){
+        this.conversas.getItems().clear();
+        
+        for (Curso curso : this.tutor.getCursos()) {
+            if (curso.listMesagems() != null && curso.listMesagems().size() > 0) {
+                this.conversas.getItems().add(curso.getAluno().getUsuario());
+            }
+        }
+    }
+    
+    
+    @FXML
+    private void conversaSelecionada(){
+        if (this.conversas.getSelectionModel().getSelectedIndex() >= 0) {
+            this.atualizarMenssagens(this.conversas.getSelectionModel().getSelectedIndex());
+        }
     }
     
     @FXML
     private void enviarMenssagem(ActionEvent event) {
-        Fachada.getInstancia().getTutorServico().enviarMensagem(this.tutor, this.tutor.getListaDeCursos().get(0).getAluno(), this.msgTexto.getText());
+        Fachada.getInstancia().getTutorServico().enviarMensagem(this.tutor, this.tutor.getCursos().get(this.conversas.getSelectionModel().getSelectedIndex()).getAluno(), this.msgTexto.getText());
         this.msgTexto.setText("");
+        this.atualizarMenssagens(this.conversas.getSelectionModel().getSelectedIndex());
     }
 }

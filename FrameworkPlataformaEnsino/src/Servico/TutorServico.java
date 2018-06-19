@@ -29,7 +29,7 @@ public class TutorServico {
     
     public void enviarMensagem(Tutor tutor, Identificacao aluno, String texto){
         Mensagem mensagem = new Mensagem(tutor, AlunoDAOMemoria.getInstancia().getAluno(aluno), texto);
-        AlunoDAOMemoria.getInstancia().getAluno(aluno).addMesagem(mensagem);
+        AlunoDAOMemoria.getInstancia().getAluno(aluno).getCurso().addMesagem(mensagem);
     }
     
     public void cadastrar (Tutor tutor){

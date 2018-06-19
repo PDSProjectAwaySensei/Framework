@@ -7,9 +7,12 @@ package Visual.Controller;
 
 import Dominio.Aluno;
 import Dominio.InformacaoPessoal;
+import Dominio.Mensagem;
 import Dominio.Tarefa;
+import Dominio.Tutor;
 import servico.Fachada;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListCell;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -22,6 +25,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -119,6 +123,30 @@ public class AlunoController implements Initializable {
         }
         
         this.atualizarListaMenssagens();
+        
+        this.mensagens.setCellFactory(new Callback<JFXListView<Mensagem>, JFXListCell<Mensagem>>() {
+            @Override
+            public JFXListCell<Mensagem> call(JFXListView<Mensagem> param) {
+                return new JFXListCell<Mensagem>() {
+                    @Override
+                    public void updateItem(Mensagem item, boolean empty) {
+                        super.updateItem(item, empty);
+                        
+                        if (item == null || empty) {
+                            setText(null);
+                        } else {
+                            if (item.getRemetente() instanceof Aluno) {
+                                this.setStyle("-fx-alignment: CENTER-RIGHT; -fx-control-inner-background: derive(palegreen, 50%);");
+                            } else {
+                                this.setStyle("-fx-alignment: CENTER-LEFT;");
+                            }
+                            
+                            setText(item.getMensagem());
+                        }
+                    }
+                };
+            }
+        });
     }
 
     @FXML
@@ -206,10 +234,12 @@ public class AlunoController implements Initializable {
     
     void atualizarListaMenssagens(){
         this.mensagens.getItems().clear();
-        if (this.aluno.listMesagems() != null && this.aluno.listMesagems().size() > 0) {
-            this.aluno.listMesagems().forEach((i) -> {
-                this.mensagens.getItems().add(i.getMensagem());
-            });
+        if (this.aluno.getCurso() != null) {
+            if (this.aluno.getCurso().listMesagems() != null && this.aluno.getCurso().listMesagems().size() > 0) {
+                this.aluno.getCurso().listMesagems().forEach((i) -> {
+                    this.mensagens.getItems().add(i);
+                });
+            }
         }
     }
     
@@ -217,5 +247,6 @@ public class AlunoController implements Initializable {
     private void enviarMenssagem(ActionEvent event) {
         Fachada.getInstancia().getAlunoServico().enviarMensagem(this.aluno, this.aluno.getCurso().getTutor(), this.msgTexto.getText());
         this.msgTexto.setText("");
+        this.atualizarListaMenssagens();
     }
 }
