@@ -9,6 +9,7 @@ import Dominio.Curso;
 import Dominio.Tarefa;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -23,7 +24,7 @@ import javafx.fxml.Initializable;
 public class CorrigirAtividadeController implements Initializable {
 
     @FXML
-    private JFXTextArea textAvaliacaoTutor;
+    private JFXTextField pontos;
     @FXML
     private JFXButton buttonCancelar;
     @FXML
@@ -49,17 +50,13 @@ public class CorrigirAtividadeController implements Initializable {
         ((JFXButton)event.getTarget()).getScene().getWindow().hide();
     }
 
-//    @FXML
-//    private void salvarAvaliacao(ActionEvent event) {
-//        if (textAvaliacaoTutor.getText().isEmpty() == false){
-//            tarefa.setAvaliacao(new AvaliacaoComentario(textAvaliacaoTutor.getText()));
-//            tarefa.getAvaliacao().setAvaliada(true);
-//            
-//            curso.getListaTarefasCorrigidas().add(tarefa);
-//            curso.getListaTarefasConcluidas().remove(tarefa);
-//            
-//            cancelar(event);
-//        }
-//    }
+    @FXML
+    private void salvarAvaliacao(ActionEvent event) {
+        if (pontos.getText().isEmpty() == false){
+            tarefa.getAtividade().setResultado(Float.parseFloat(pontos.getText()));
+            
+            cancelar(event);
+        }
+    }
 //    
 }

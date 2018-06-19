@@ -9,7 +9,6 @@ import Dominio.Aluno;
 import Dominio.InformacaoPessoal;
 import Dominio.Mensagem;
 import Dominio.Tarefa;
-import Dominio.Tutor;
 import servico.Fachada;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListCell;
@@ -111,13 +110,13 @@ public class AlunoController implements Initializable {
         }
         
         if (aluno.getCurso() != null){
-            aluno.getCurso().getListaTarefas().forEach((i) -> {
+            aluno.getCurso().getTarefas().forEach((i) -> {
                 listaTarefasAluno.getItems().add(i.getNomeTarefa() + " : " + i.getDescricao());
             });
         }
         
         if (aluno.getCurso() != null){
-            aluno.getCurso().getListaTarefasCorrigidas().forEach((i) -> {
+            aluno.getCurso().getTarefasCorrigidas().forEach((i) -> {
                 listaTarefasAlunoCorrigidas.getItems().add(i.getNomeTarefa() + " : " + i.getDescricao());
             });
         }
@@ -199,14 +198,14 @@ public class AlunoController implements Initializable {
     ///////////////////////////////////////////////////////////////////////////
     @FXML
     private void responderTarefa(ActionEvent event) throws IOException {
-        Tarefa tarefa = aluno.getCurso().getListaTarefas().get(listaTarefasAluno.getSelectionModel().getSelectedIndex());
+        Tarefa tarefa = aluno.getCurso().getTarefas().get(listaTarefasAluno.getSelectionModel().getSelectedIndex());
         Main.getInstancia().telaResponderTarefa(aluno, tarefa);
     }
     
     @FXML
     private void atualizarListaTarefas(ActionEvent event) throws IOException {
         listaTarefasAluno.getItems().clear();
-        aluno.getCurso().getListaTarefas().forEach((i) -> {
+        aluno.getCurso().getTarefas().forEach((i) -> {
             listaTarefasAluno.getItems().add(i.getNomeTarefa() + " : " + i.getDescricao());
         });
     }
@@ -223,7 +222,7 @@ public class AlunoController implements Initializable {
     }
     @FXML
     private void verAvaliacao(ActionEvent event) throws IOException {
-        Tarefa tarefa = aluno.getCurso().getListaTarefasCorrigidas().get(listaTarefasAlunoCorrigidas.getSelectionModel().getSelectedIndex());
+        Tarefa tarefa = aluno.getCurso().getTarefasCorrigidas().get(listaTarefasAlunoCorrigidas.getSelectionModel().getSelectedIndex());
         Main.getInstancia().telaVerAvaliacao(tarefa);
     }
     

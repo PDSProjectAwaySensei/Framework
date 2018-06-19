@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<JFXTabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@screen.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<JFXTabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1061.0" stylesheets="@screen.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <tabs>
       <Tab closable="false" text="Perfil">
          <content>
@@ -78,11 +78,11 @@
                               <Label id="chatName" alignment="CENTER" text="Label" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane id="chatMessages" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                        <AnchorPane id="chatMessages" prefHeight="500.0" prefWidth="872.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <JFXListView fx:id="mensagens" layoutX="12.0" layoutY="16.0" prefHeight="375.0" prefWidth="974.0" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
-                              <JFXTextArea fx:id="msgTexto" layoutX="12.0" layoutY="403.0" prefHeight="83.0" prefWidth="766.0" />
-                              <JFXButton fx:id="btnEnviarMensagem" layoutX="784.0" layoutY="419.0" onAction="#enviarMenssagem" prefHeight="52.0" prefWidth="161.0" text="Enviar" />
+                              <JFXListView fx:id="mensagens" fixedCellSize="800.0" layoutX="16.0" layoutY="20.0" maxWidth="912.0" prefHeight="367.0" prefWidth="912.0" AnchorPane.bottomAnchor="114.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="19.0" />
+                              <JFXTextArea fx:id="msgTexto" layoutX="12.0" layoutY="403.0" prefHeight="83.0" prefWidth="631.0" />
+                              <JFXButton fx:id="btnEnviarMensagem" layoutX="726.0" layoutY="419.0" onAction="#enviarMenssagem" prefHeight="52.0" prefWidth="161.0" text="Enviar" />
                            </children></AnchorPane>
                      </children>
                   </VBox>

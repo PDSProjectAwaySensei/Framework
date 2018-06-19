@@ -6,8 +6,10 @@
 package Visual.Controller;
 
 import Dominio.Curso;
+import Dominio.Tarefa;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -39,9 +41,9 @@ public class EscolherTarefaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         listaTarefasConcluidas.getItems().clear();
-//        curso.getListaTarefasConcluidas().forEach((i) -> {
-//            listaTarefasConcluidas.getItems().add(i.getNomeTarefa());
-//        });
+        curso.getTarefasRespondidas().forEach((i) -> {
+            listaTarefasConcluidas.getItems().add(i.getNomeTarefa());
+        });
     }    
 
     @FXML
@@ -49,9 +51,9 @@ public class EscolherTarefaController implements Initializable {
         ((JFXButton)event.getTarget()).getScene().getWindow().hide(); 
     }
 
-//    @FXML
-////    private void selecionarTarefa(ActionEvent event) throws IOException {
-////        Tarefa tarefa = curso.getListaTarefasConcluidas().get(listaTarefasConcluidas.getSelectionModel().getSelectedIndex());
-////        Main.getInstancia().telaAvaliarTarefa(curso, tarefa);
-////    }
+    @FXML
+    private void selecionarTarefa(ActionEvent event) throws IOException {
+        Tarefa tarefa = curso.getTarefasRespondidas().get(listaTarefasConcluidas.getSelectionModel().getSelectedIndex());
+        Main.getInstancia().telaAvaliarTarefa(curso, tarefa);
+    }
 }

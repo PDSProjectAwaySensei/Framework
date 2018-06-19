@@ -14,16 +14,14 @@ import java.util.ArrayList;
 public class Curso {
     private Identificacao aluno;
     private Identificacao tutor;
-    private boolean status;
-    private ArrayList<Tarefa> listaTarefas;
+    private ArrayList<Tarefa> tarefas;
     private final ArrayList<Mensagem> mensagens;
     public int debito;
 
     public Curso(Identificacao aluno, Identificacao tutor) {
         this.aluno = aluno;
         this.tutor = tutor;
-        this.status = false;
-        this.listaTarefas = new ArrayList<>();  
+        this.tarefas = new ArrayList<>();  
         this.mensagens = new ArrayList<>();
     }
     
@@ -36,23 +34,26 @@ public class Curso {
             this.tutor = tutor;
     }
 
-    public boolean isStatus() {
-        return this.status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public ArrayList<Tarefa> getListaTarefas() {
-        return this.listaTarefas;
+    public ArrayList<Tarefa> getTarefas() {
+        return this.tarefas;
     }
     
-    public ArrayList<Tarefa> getListaTarefasCorrigidas() {
+    public ArrayList<Tarefa> getTarefasRespondidas() {
+        ArrayList<Tarefa> respondidas = new ArrayList<>();
+        
+        for (Tarefa tarefa : this.tarefas) {
+            if (tarefa.getAtividade() != null) {
+                respondidas.add(tarefa);
+            }
+        }
+        return respondidas;
+    }
+    
+    public ArrayList<Tarefa> getTarefasCorrigidas() {
         ArrayList<Tarefa> corrigidas = new ArrayList<>();
         
-        for (Tarefa tarefa : this.listaTarefas) {
-            if (tarefa.isCorrigida()) {
+        for (Tarefa tarefa : this.tarefas) {
+            if (tarefa.getAtividade().getResultado() >= 0) {
                 corrigidas.add(tarefa);
             }
         }
@@ -60,7 +61,7 @@ public class Curso {
     }
 
     public void setListaTarefas(ArrayList<Tarefa> listaTarefas) {
-        this.listaTarefas = listaTarefas;
+        this.tarefas = listaTarefas;
     }
 
     public Identificacao getAluno() {
@@ -72,7 +73,7 @@ public class Curso {
     }
     
     public void addtarefa(Tarefa tarefa){
-        this.listaTarefas.add(tarefa);
+        this.tarefas.add(tarefa);
     }
 
     public int getDebito() {

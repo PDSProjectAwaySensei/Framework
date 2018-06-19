@@ -5,7 +5,6 @@
  */
 package Visual.Controller;
 
-import Dados.AlunoDAO;
 import Dados.AlunoDAOMemoria;
 import Dominio.Aluno;
 import Dominio.Identificacao;
@@ -72,6 +71,7 @@ public class EnviarTarefaController implements Initializable {
         }
         
         Fachada.getInstancia().enviarTarefas(tutor.getIdentificacao(), tarefas, alunos);
+        ((JFXButton)event.getTarget()).getScene().getWindow().hide();
     }
     
 }

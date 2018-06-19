@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Servico;
+import Dominio.Resposta;
 import Dominio.Tarefa;
 
 /**
@@ -26,6 +27,10 @@ public abstract class TarefaServico {
 
     public void setTarefa(Tarefa tarefa) {
         this.tarefa = tarefa;
+    }
+    
+    public void responder(Resposta resposta) {
+        this.tarefa.setResposta(resposta);
     }
     
     public abstract void avaliar ();

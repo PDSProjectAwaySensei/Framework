@@ -7,6 +7,7 @@ package Visual.Controller;
 
 import Dominio.Tarefa;
 import awaySensei.AtividadeVideo;
+import awaySensei.RespostaVideo;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -49,8 +50,8 @@ public class VerAtividadeController implements Initializable{
          
         textLinkTutor.setText(((AtividadeVideo)tarefa.getAtividade()).getLinkVideoTutor()); 
         textComTutor.setText(((AtividadeVideo)tarefa.getAtividade()).getComVideoTutor());
-        textLinkAluno.setText(((AtividadeVideo)tarefa.getAtividade()).getLinkVideoAluno()); 
-        textComAluno.setText(((AtividadeVideo)tarefa.getAtividade()).getComVideoAluno());
+        textLinkAluno.setText(((RespostaVideo)tarefa.getResposta()).getLinkVideo());
+        textComAluno.setText(((RespostaVideo)tarefa.getResposta()).getComentario());
     }     
  
     @FXML 

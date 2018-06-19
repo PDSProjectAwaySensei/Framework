@@ -5,6 +5,7 @@ public class Tarefa {
     private String nomeTarefa;
     private String descricao;
     private Atividade atividade;
+    private Resposta resposta;
     private float resultado;
     private boolean corrigida;
 
@@ -39,6 +40,14 @@ public class Tarefa {
 
     public void setAtividade(Atividade atividade) {
         this.atividade = atividade;
+    }
+
+    public Resposta getResposta() {
+        return resposta;
+    }
+
+    public void setResposta(Resposta resposta) {
+        this.resposta = resposta;
     }
 
     public float getResultado() {

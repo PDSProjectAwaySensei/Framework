@@ -6,8 +6,10 @@
 package Visual.Controller; 
  
 import Dominio.Aluno; 
+import Dominio.Resposta;
 import Dominio.Tarefa; 
 import awaySensei.AtividadeVideo;
+import awaySensei.RespostaVideo;
 import com.jfoenix.controls.JFXButton; 
 import com.jfoenix.controls.JFXTextArea; 
 import com.jfoenix.controls.JFXTextField; 
@@ -61,20 +63,17 @@ public class ResponderAtividadeController implements Initializable {
         ((JFXButton)event.getTarget()).getScene().getWindow().hide(); 
     } 
  
-//    @FXML 
-//    private void criarAtividade(ActionEvent event) { 
-//        if (textLinkAluno.getText().isEmpty() == false) { 
-//            ((AtividadeVideo)tarefa.getAtividade()).setLinkVideoAluno(textLinkAluno.getText()); 
-//            ((AtividadeVideo)tarefa.getAtividade()).setComVideoAluno(textComAluno.getText()); 
-//            tarefa.getAtividade().setConcluida(true);
-//            
-//            aluno.getCurso().getListaTarefasConcluidas().add(tarefa);
-//            aluno.getCurso().getListaTarefas().remove(tarefa);
-//            
-//            textLinkAluno.setDisable(true);
-//            textLinkAluno.setDisable(true);
-//            
-//            cancelar(event); 
-//        } 
-//    } 
+    @FXML 
+    private void criarAtividade(ActionEvent event) { 
+        if (textLinkAluno.getText().isEmpty() == false) {
+            RespostaVideo resposta = new RespostaVideo(textLinkAluno.getText(), textComAluno.getText());
+            
+            tarefa.setResposta(resposta);
+            
+            textLinkAluno.setDisable(true);
+            textLinkAluno.setDisable(true);
+            
+            cancelar(event); 
+        } 
+    } 
 }

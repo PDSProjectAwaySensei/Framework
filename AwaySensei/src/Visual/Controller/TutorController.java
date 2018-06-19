@@ -5,9 +5,7 @@
  */
 package Visual.Controller;
 
-import Dados.AlunoDAOMemoria;
 import Dados.TutorDAOMemoria;
-import Dominio.Aluno;
 import Dominio.Curso;
 import Dominio.InformacaoPessoal;
 import Dominio.Mensagem;
@@ -95,6 +93,8 @@ public class TutorController implements Initializable {
                     @Override
                     public void updateItem(Mensagem item, boolean empty) {
                         super.updateItem(item, empty);
+                        
+                        this.setWrapText(true);
                         
                         if (item == null || empty) {
                             setText(null);
@@ -190,8 +190,8 @@ public class TutorController implements Initializable {
     
     @FXML
     private void corrigirTarefas(ActionEvent event) throws IOException {
-//        Curso curso = tutor.getListaDeCursos().get(alunos.getSelectionModel().getSelectedIndex());
-//        Main.getInstancia().telaEscolherTarefas(curso);
+        Curso curso = tutor.getCursos().get(alunos.getSelectionModel().getSelectedIndex());
+        Main.getInstancia().telaEscolherTarefas(curso);
     }
     
     void atualizarListaTarefas(){

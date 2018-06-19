@@ -78,8 +78,6 @@ public class NovaTarefaController implements Initializable {
     @FXML
     private void criarTarefa(ActionEvent event) {
         
-        System.out.println(((AtividadeVideo)this.tarefa.getAtividade()).getComVideoTutor());
-        
         if (tarefa.getAtividade() != null){
             // Inserir Tarefa no Sensei
             tarefa.setNomeTarefa(textNomeTarefa.getText());

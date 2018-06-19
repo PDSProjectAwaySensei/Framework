@@ -3,16 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servico;
+package Dominio;
 
 /**
  *
- * @author José Carlos
+ * @author Residentes
  */
-public class TarefaServicoAwaySensei extends Servico.TarefaServico{
-
-    @Override
-    public void avaliar() {
-    
-    }    
-}
+public interface Resposta {}

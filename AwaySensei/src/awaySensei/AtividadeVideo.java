@@ -6,6 +6,7 @@
 package awaySensei;
 
 import Dominio.Atividade;
+import Dominio.Resposta;
 
 /**
  *
@@ -14,8 +15,7 @@ import Dominio.Atividade;
 public class AtividadeVideo extends Atividade{
     private String linkVideoTutor;
     private String ComVideoTutor;
-    private String linkVideoAluno;
-    private String ComVideoAluno;
+    private RespostaVideo resposta;
 
     public AtividadeVideo(String linkVideoTutor, String ComVideoTutor) {
         super();
@@ -39,22 +39,11 @@ public class AtividadeVideo extends Atividade{
         this.ComVideoTutor = ComVideoTutor;
     }
 
-    public String getLinkVideoAluno() {
-        return linkVideoAluno;
+    public Resposta getResposta() {
+        return resposta;
     }
 
-    public void setLinkVideoAluno(String linkVideoAluno) {
-        this.linkVideoAluno = linkVideoAluno;
+    public void setResposta(RespostaVideo resposta) {
+        this.resposta = resposta;
     }
-
-    public String getComVideoAluno() {
-        return ComVideoAluno;
-    }
-
-    public void setComVideoAluno(String ComVideoAluno) {
-        this.ComVideoAluno = ComVideoAluno;
-    }
-    
-    
-    
 }
