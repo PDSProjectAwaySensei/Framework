@@ -111,7 +111,7 @@ public class Main {
 
     void telaResponderTarefa(Aluno aluno, Tarefa tarefa) throws IOException {
         Stage stageResponderAtividade = new Stage(); 
-        FXMLLoader loaderTelaResponderAtividade = (new FXMLLoader(getClass().getResource("/Visual/fxml/CriarAtividade.fxml"))); 
+        FXMLLoader loaderTelaResponderAtividade = (new FXMLLoader(getClass().getResource("/Visual/fxml/CriarQuestionario.fxml"))); 
         loaderTelaResponderAtividade.setController(new ResponderQuestionarioController(aluno, tarefa)); 
         stageResponderAtividade.setScene(new Scene(loaderTelaResponderAtividade.load()));
         stageResponderAtividade.show();
