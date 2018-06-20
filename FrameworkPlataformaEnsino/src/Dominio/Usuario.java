@@ -1,7 +1,5 @@
 package Dominio;
 
-import java.util.ArrayList;
-
 public abstract class Usuario {
     private Identificacao identificacao;
     private InformacaoPessoal informacaoPessoal;

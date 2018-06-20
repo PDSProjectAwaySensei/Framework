@@ -128,23 +128,16 @@ public class Main {
     public void telaAvaliarTarefa(Curso curso, Tarefa tarefa) throws IOException {
         //Abrir Tarefa Bloqueada
         Stage stageVerAtividade = new Stage(); 
-        FXMLLoader loaderTelaVerAtividade = (new FXMLLoader(getClass().getResource("/Visual/fxml/CriarAtividade.fxml"))); 
+        FXMLLoader loaderTelaVerAtividade = (new FXMLLoader(getClass().getResource("/Visual/fxml/CriarQuestionario.fxml"))); 
         loaderTelaVerAtividade.setController(new VerAtividadeController(tarefa)); 
         stageVerAtividade.setScene(new Scene(loaderTelaVerAtividade.load()));
         stageVerAtividade.show();
-        
-        //Abrir Tela de Corrigir
-        Stage stageCorrigirTarefa = new Stage();
-        FXMLLoader loaderTelaCorrigirTarefa = (new FXMLLoader(getClass().getResource("/Visual/fxml/CorrigirAtividade.fxml")));
-        loaderTelaCorrigirTarefa.setController(new CorrigirAtividadeController(curso, tarefa));
-        stageCorrigirTarefa.setScene(new Scene(loaderTelaCorrigirTarefa.load()));
-        stageCorrigirTarefa.show();
     }
 
     void telaVerAvaliacao(Tarefa tarefa) throws IOException {
         Stage stageVerTarefaCorrigida = new Stage();
         FXMLLoader loaderTelaVerTarefaCorrigida = (new FXMLLoader(getClass().getResource("/Visual/fxml/CorrigirAtividade.fxml")));
-        loaderTelaVerTarefaCorrigida.setController(new VerTarefaCorrigidaController(tarefa));
+        loaderTelaVerTarefaCorrigida.setController(new VerCorrecaoController(tarefa));
         stageVerTarefaCorrigida.setScene(new Scene(loaderTelaVerTarefaCorrigida.load()));
         stageVerTarefaCorrigida.show();
     }
@@ -154,5 +147,13 @@ public class Main {
         FXMLLoader loaderPagamento = (new FXMLLoader(getClass().getResource("/Visual/fxml/telaPagamento.fxml")));
         stagePagamento.setScene(new Scene(loaderPagamento.load()));
         stagePagamento.show();
+    }
+
+    void atribuirNota(Tarefa tarefa) throws IOException {
+        Stage stageVerTarefaCorrigida = new Stage();
+        FXMLLoader attrNota = (new FXMLLoader(getClass().getResource("/Visual/fxml/Nota.fxml")));
+        attrNota.setController(new SetNotaFXMLController(tarefa));
+        stageVerTarefaCorrigida.setScene(new Scene(attrNota.load()));
+        stageVerTarefaCorrigida.show();
     }
 }

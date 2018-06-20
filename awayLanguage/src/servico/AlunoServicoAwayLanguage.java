@@ -12,7 +12,7 @@ import Dominio.Identificacao;
  *
  * @author Residentes
  */
-public class AlunoServicoAwaySensei extends Servico.AlunoServico{
+public class AlunoServicoAwayLanguage extends Servico.AlunoServico{
 
     @Override
     public boolean pagar(Identificacao aluno) {

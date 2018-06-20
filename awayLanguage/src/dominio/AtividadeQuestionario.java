@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Visual.Controller;
+package dominio;
 
 import Dominio.Atividade;
 import java.util.ArrayList;
@@ -13,21 +13,21 @@ import java.util.ArrayList;
  * @author jeck
  */
 public class AtividadeQuestionario extends Atividade{
-    private ArrayList<Questao> questoes;
+    private ArrayList<String> questoes;
 
     public AtividadeQuestionario() {
-        questoes = new ArrayList<Questao>();
+        questoes = new ArrayList<String>();
     }
 
-    public AtividadeQuestionario(ArrayList<Questao> questoes) {
+    public AtividadeQuestionario(ArrayList<String> questoes) {
         this.questoes = questoes;
     }
 
-    public ArrayList<Questao> getQuestoes() {
+    public ArrayList<String> getQuestoes() {
         return questoes;
     }
 
-    public void setQuestoes(ArrayList<Questao> questoes) {
+    public void setQuestoes(ArrayList<String> questoes) {
         this.questoes = questoes;
     }    
 }

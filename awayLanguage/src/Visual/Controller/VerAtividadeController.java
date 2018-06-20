@@ -6,30 +6,28 @@
 package Visual.Controller;
 
 import Dominio.Tarefa;
-import awaySensei.AtividadeVideo;
-import awaySensei.RespostaVideo;
+import dominio.AtividadeQuestionario;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
+import dominio.RespostaQuestionario;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.VBox;
 
 /**
  *
  * @author jeckson
  */
 public class VerAtividadeController implements Initializable{
-    @FXML 
-    private JFXTextField textLinkTutor; 
-    @FXML 
-    private JFXTextArea textComTutor; 
-    @FXML 
-    private JFXTextField textLinkAluno; 
-    @FXML 
-    private JFXTextArea textComAluno; 
+    @FXML
+    private JFXListView<VBox> listaQuestoes;
     @FXML 
     private JFXButton buttonCancelar; 
     @FXML 
@@ -43,24 +41,32 @@ public class VerAtividadeController implements Initializable{
      * Initializes the controller class. 
      */ 
     public void initialize(URL url, ResourceBundle rb) { 
-        textLinkTutor.setDisable(true); 
-        textComTutor.setDisable(true);
-        textComAluno.setDisable(true);
-        buttonSalvar.setDisable(true);
+        buttonSalvar.setText("Avaliar");
          
-        textLinkTutor.setText(((AtividadeVideo)tarefa.getAtividade()).getLinkVideoTutor()); 
-        textComTutor.setText(((AtividadeVideo)tarefa.getAtividade()).getComVideoTutor());
-        textLinkAluno.setText(((RespostaVideo)tarefa.getResposta()).getLinkVideo());
-        textComAluno.setText(((RespostaVideo)tarefa.getResposta()).getComentario());
+        ArrayList<String> questoes = ((AtividadeQuestionario) tarefa.getAtividade()).getQuestoes();
+        ArrayList<String> respostas = ((RespostaQuestionario) tarefa.getResposta()).getRespostas();
+        
+        for (int i = 0; i < questoes.size(); i++) {
+            JFXTextField enunciado = new JFXTextField(questoes.get(i));
+            JFXTextField resposta = new JFXTextField(respostas.get(i));
+            enunciado.setEditable(true);
+            resposta.setDisable(false);
+            VBox box = new VBox();
+            box.getChildren().addAll(enunciado, resposta);
+            listaQuestoes.getItems().add(box);
+        }
     }     
  
     @FXML 
     private void cancelar(ActionEvent event) { 
         ((JFXButton)event.getTarget()).getScene().getWindow().hide(); 
-    } 
+    }
+    
+    @FXML
+    private void addQuestao(ActionEvent event) {}
  
     @FXML 
-    private void criarAtividade(ActionEvent event) { 
-        //
-    }    
+    private void salvarQuestionario(ActionEvent event) throws IOException {
+        Main.getInstancia().atribuirNota(tarefa);
+    }  
 }

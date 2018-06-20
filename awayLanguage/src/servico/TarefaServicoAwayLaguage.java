@@ -9,10 +9,10 @@ package servico;
  *
  * @author José Carlos
  */
-public class TarefaServicoAwaySensei extends Servico.TarefaServico{
+public class TarefaServicoAwayLaguage extends Servico.TarefaServico{
 
     @Override
     public void avaliar() {
-    
+        
     }    
 }

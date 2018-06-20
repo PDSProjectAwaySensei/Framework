@@ -13,34 +13,36 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 
 /**
+ * FXML Controller class
  *
- * @author jeckson
+ * @author José Carlos
  */
-public class VerCorrecaoController implements Initializable {
+public class SetNotaFXMLController implements Initializable {
+
+    /**
+     * Initializes the controller class.
+     */
+    
     @FXML 
     private JFXTextField nota;
-    @FXML
-    private JFXButton add;
     
     Tarefa tarefa;
 
-    public VerCorrecaoController(Tarefa tarefa) {
+    public SetNotaFXMLController(Tarefa tarefa) {
         this.tarefa = tarefa;
     }
     
-    
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        this.add.setText("Sair");
-        this.nota.setText(""+this.tarefa.getResultado());
-        this.nota.setEditable(false);
     }    
     
     @FXML
     public void setNota(ActionEvent event) {
+        this.tarefa.setResultado(Float.parseFloat(this.nota.getText()));
+        
         ((JFXButton)event.getTarget()).getScene().getWindow().hide(); 
     }
 }

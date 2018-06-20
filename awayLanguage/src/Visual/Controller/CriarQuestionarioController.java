@@ -5,10 +5,10 @@
  */
 package Visual.Controller;
 
+import dominio.AtividadeQuestionario;
 import Dominio.Tarefa;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
-import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ArrayList;
@@ -59,24 +59,19 @@ public class CriarQuestionarioController implements Initializable {
     @FXML
     private void addQuestao(ActionEvent event) {
         VBox box = new VBox();
-        JFXTextField j = new JFXTextField();
-        j.setDisable(true);
-        box.getChildren().addAll(new JFXTextField(), j);
+        box.getChildren().addAll(new JFXTextField());
         listaQuestoes.getItems().add(box);
         
     }
 
     @FXML
     private void salvarQuestionario(ActionEvent event) {
-        ArrayList<Questao> questoes = new ArrayList<>();
         ObservableList<VBox> items = listaQuestoes.getItems();
+        ArrayList<String> questoes = new ArrayList<>();
         for (VBox box : items){
             ObservableList<Node> children = box.getChildren();
             JFXTextField i = (JFXTextField)children.get(0);
-            JFXTextField j = (JFXTextField)children.get(1);
-            
-            Questao q = new Questao(i.getText(), j.getText());
-            questoes.add(q);
+            questoes.add(i.getText());
         }
         
         if (questoes != null){

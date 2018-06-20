@@ -29,9 +29,9 @@ public class Fachada {
     
     protected Fachada(){
         this.usuarioServico = new UsuarioServico();
-        this.alunoServico = new AlunoServicoAwaySensei();
+        this.alunoServico = new AlunoServicoAwayLanguage();
         this.tutorServico = new TutorServico();
-        this.tarefaServico = new TarefaServicoAwaySensei();
+        this.tarefaServico = new TarefaServicoAwayLaguage();
     }
     
     public static Fachada getInstancia(){
