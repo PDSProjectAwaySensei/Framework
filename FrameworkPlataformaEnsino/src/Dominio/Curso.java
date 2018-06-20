@@ -42,7 +42,7 @@ public class Curso {
         ArrayList<Tarefa> respondidas = new ArrayList<>();
         
         for (Tarefa tarefa : this.tarefas) {
-            if (tarefa.getResposta() != null && tarefa.getAtividade().getResultado() < 0) {
+            if (tarefa.getResposta() != null && tarefa.getResultado() == null) {
                 respondidas.add(tarefa);
             }
         }
@@ -53,7 +53,7 @@ public class Curso {
         ArrayList<Tarefa> corrigidas = new ArrayList<>();
         
         for (Tarefa tarefa : this.tarefas) {
-            if (tarefa.getResposta() != null && tarefa.getAtividade().getResultado() >= 0) {
+            if (tarefa.getResposta() != null && tarefa.getResultado() != null) {
                 corrigidas.add(tarefa);
             }
         }

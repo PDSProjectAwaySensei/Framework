@@ -69,4 +69,12 @@ public class Fachada {
     public void enviarTarefas(Identificacao identificacao, ArrayList<Tarefa> tarefas, ArrayList<Aluno> selecionados) {
         this.tutorServico.enviarTarefas(identificacao, tarefas, selecionados);
     }
+
+    public TarefaServico getTarefaServico() {
+        return tarefaServico;
+    }
+
+    public void setTarefaServico(TarefaServico tarefaServico) {
+        this.tarefaServico = tarefaServico;
+    }
 }

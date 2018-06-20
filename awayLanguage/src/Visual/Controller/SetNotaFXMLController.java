@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import servico.ResultadoPontuacao;
 
 /**
  * FXML Controller class
@@ -41,7 +41,7 @@ public class SetNotaFXMLController implements Initializable {
     
     @FXML
     public void setNota(ActionEvent event) {
-        this.tarefa.setResultado(Float.parseFloat(this.nota.getText()));
+        this.tarefa.setResultado(new ResultadoPontuacao(Float.parseFloat(this.nota.getText())));
         
         ((JFXButton)event.getTarget()).getScene().getWindow().hide(); 
     }

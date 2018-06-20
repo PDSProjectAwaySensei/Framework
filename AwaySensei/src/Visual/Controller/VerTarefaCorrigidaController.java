@@ -6,6 +6,7 @@
 package Visual.Controller;
 
 import Dominio.Tarefa;
+import awaySensei.ResultadoNota;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -38,7 +39,7 @@ public class VerTarefaCorrigidaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         buttonSalvar.setVisible(false);
         buttonCancelar.setVisible(false);
-        pontos.setText("Nota: "+tarefa.getAtividade().getResultado());
+        pontos.setText("Nota: "+((ResultadoNota)tarefa.getResultado()).getNota());
         pontos.setEditable(false);
     }    
     

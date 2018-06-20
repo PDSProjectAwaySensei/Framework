@@ -136,7 +136,7 @@ public class Main {
 
     void telaVerAvaliacao(Tarefa tarefa) throws IOException {
         Stage stageVerTarefaCorrigida = new Stage();
-        FXMLLoader loaderTelaVerTarefaCorrigida = (new FXMLLoader(getClass().getResource("/Visual/fxml/CorrigirAtividade.fxml")));
+        FXMLLoader loaderTelaVerTarefaCorrigida = (new FXMLLoader(getClass().getResource("/Visual/fxml/Nota.fxml")));
         loaderTelaVerTarefaCorrigida.setController(new VerCorrecaoController(tarefa));
         stageVerTarefaCorrigida.setScene(new Scene(loaderTelaVerTarefaCorrigida.load()));
         stageVerTarefaCorrigida.show();

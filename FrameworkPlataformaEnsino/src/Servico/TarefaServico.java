@@ -33,5 +33,5 @@ public abstract class TarefaServico {
         this.tarefa.setResposta(resposta);
     }
     
-    public abstract void avaliar();
+    public abstract void avaliar(Tarefa tarefa);
 }

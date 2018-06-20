@@ -5,14 +5,26 @@
  */
 package servico;
 
+import Dominio.Tarefa;
+import awaySensei.ResultadoNota;
+
 /**
  *
  * @author José Carlos
  */
-public class TarefaServicoAwaySensei extends Servico.TarefaServico{
-
+public class TarefaServicoAwaySensei extends Servico.TarefaServico{   
+    private float resultado; 
+        
     @Override
-    public void avaliar() {
-    
-    }    
+    public void avaliar(Tarefa tarefa) {
+        tarefa.setResultado(new ResultadoNota(this.resultado));
+    }
+
+    public float getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(float resultado) {
+        this.resultado = resultado;
+    }
 }

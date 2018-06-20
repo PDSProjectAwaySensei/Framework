@@ -223,7 +223,6 @@ public class AlunoController implements Initializable {
     @FXML
     private void verAvaliacao(ActionEvent event) throws IOException {
         Tarefa tarefa = aluno.getCurso().getTarefasCorrigidas().get(listaTarefasAlunoCorrigidas.getSelectionModel().getSelectedIndex());
-        System.err.println("Nota: "+tarefa.getResultado());
         Main.getInstancia().telaVerAvaliacao(tarefa);
     }
     

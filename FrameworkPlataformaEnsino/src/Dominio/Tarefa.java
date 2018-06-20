@@ -6,14 +6,16 @@ public class Tarefa {
     private String descricao;
     private Atividade atividade;
     private Resposta resposta;
-    private float resultado;
+    private Resultado resultado;
     private boolean corrigida;
+    private boolean concluida;
 
     public Tarefa(String nomeTarefa, String descricao, Atividade atividade) {
         this.nomeTarefa = nomeTarefa;
         this.descricao = descricao;
         this.atividade = atividade;
         this.corrigida = false;
+        
     }
 
     public Tarefa() {}
@@ -50,11 +52,11 @@ public class Tarefa {
         this.resposta = resposta;
     }
 
-    public float getResultado() {
+    public Resultado getResultado() {
         return resultado;
     }
 
-    public void setResultado(float resultado) {
+    public void setResultado(Resultado resultado) {
         this.resultado = resultado;
     }
 
@@ -65,5 +67,12 @@ public class Tarefa {
     public void setCorrigida(boolean corrigida) {
         this.corrigida = corrigida;
     }
-    
+
+    public boolean isConcluida() {
+        return concluida;
+    }
+
+    public void setConcluida(boolean concluida) {
+        this.concluida = concluida;
+    }
 }

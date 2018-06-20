@@ -8,7 +8,6 @@ package Visual.Controller;
 import Dominio.Aluno;
 import Dominio.InformacaoPessoal;
 import Dominio.Mensagem;
-import Dominio.Resposta;
 import Dominio.Tarefa;
 import servico.Fachada;
 import com.jfoenix.controls.JFXButton;
@@ -17,7 +16,6 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
-import dominio.RespostaQuestionario;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -225,7 +223,6 @@ public class AlunoController implements Initializable {
     @FXML
     private void verAvaliacao(ActionEvent event) throws IOException {
         Tarefa tarefa = aluno.getCurso().getTarefasCorrigidas().get(listaTarefasAlunoCorrigidas.getSelectionModel().getSelectedIndex());
-        System.err.println("Nota: "+tarefa.getResultado());
         Main.getInstancia().telaVerAvaliacao(tarefa);
     }
     

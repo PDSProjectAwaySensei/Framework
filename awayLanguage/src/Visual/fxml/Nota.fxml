@@ -14,7 +14,7 @@
             <Font size="49.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="nota" layoutX="142.0" layoutY="149.0" prefHeight="71.0" prefWidth="118.0">
+      <JFXTextField fx:id="nota" layoutX="198.0" layoutY="150.0" prefHeight="102.0" prefWidth="91.0">
          <font>
             <Font size="48.0" />
          </font>

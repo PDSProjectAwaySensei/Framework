@@ -7,6 +7,7 @@ package Visual.Controller;
 
 import Dominio.Curso;
 import Dominio.Tarefa;
+import awaySensei.ResultadoNota;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -14,6 +15,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import servico.Fachada;
+import servico.TarefaServicoAwaySensei;
 
 /**
  * FXML Controller class
@@ -52,10 +55,8 @@ public class CorrigirAtividadeController implements Initializable {
     @FXML
     private void salvarAvaliacao(ActionEvent event) {
         if (pontos.getText().isEmpty() == false){
-            tarefa.getAtividade().setResultado(Float.parseFloat(pontos.getText()));
-            
-            System.err.println("Nota atribuída:"+tarefa.getAtividade().getResultado());
-            
+            ((TarefaServicoAwaySensei)Fachada.getInstancia().getTarefaServico()).setResultado(Float.parseFloat(pontos.getText()));
+            Fachada.getInstancia().getTarefaServico().avaliar(tarefa);
             cancelar(event);
         }
     }

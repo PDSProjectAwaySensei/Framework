@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import servico.ResultadoPontuacao;
 
 /**
  *
@@ -35,7 +36,7 @@ public class VerCorrecaoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.add.setText("Sair");
-        this.nota.setText(""+this.tarefa.getResultado());
+        this.nota.setText(""+((ResultadoPontuacao)this.tarefa.getResultado()).getNota());
         this.nota.setEditable(false);
     }    
     
@@ -43,4 +44,12 @@ public class VerCorrecaoController implements Initializable {
     public void setNota(ActionEvent event) {
         ((JFXButton)event.getTarget()).getScene().getWindow().hide(); 
     }
+    
+    @FXML 
+    private void cancelar(ActionEvent event) { 
+        ((JFXButton)event.getTarget()).getScene().getWindow().hide(); 
+    }
+    
+    @FXML
+    private void salvarAvaliacao(ActionEvent event) {}
 }

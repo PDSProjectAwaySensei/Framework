@@ -14,6 +14,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import servico.Fachada;
+import servico.ResultadoPontuacao;
+import servico.TarefaServicoAwayLaguage;
 
 /**
  * FXML Controller class
@@ -52,9 +55,11 @@ public class CorrigirAtividadeController implements Initializable {
     @FXML
     private void salvarAvaliacao(ActionEvent event) {
         if (pontos.getText().isEmpty() == false){
-            tarefa.getAtividade().setResultado(Float.parseFloat(pontos.getText()));
+            ((TarefaServicoAwayLaguage)Fachada.getInstancia().getTarefaServico()).setResultado(Float.parseFloat(this.pontos.getText()));
             
-            System.err.println("Nota atribuída:"+tarefa.getAtividade().getResultado());
+            Fachada.getInstancia().getTarefaServico().avaliar(tarefa);
+            
+            System.err.println("Nota atribuída:"+tarefa.getResultado());
             
             cancelar(event);
         }

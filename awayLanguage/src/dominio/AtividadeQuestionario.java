@@ -16,7 +16,7 @@ public class AtividadeQuestionario extends Atividade{
     private ArrayList<String> questoes;
 
     public AtividadeQuestionario() {
-        questoes = new ArrayList<String>();
+        this.questoes = new ArrayList<String>();        
     }
 
     public AtividadeQuestionario(ArrayList<String> questoes) {
